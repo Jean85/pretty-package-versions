@@ -27,7 +27,7 @@ install:
   - if [[ -z $DEPS ]]; then composer update --prefer-dist --prefer-stable --no-interaction; fi
 
 script:
-  - if [[ $TEST_COVERAGE ]]; then phpdbg -qrr bin/phpunit --coverage-clover ./build/logs/clover.xml; else bin/phpunit; fi
+  - if [[ $TEST_COVERAGE ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml; else vendor/bin/phpunit; fi
 
 after_success:
   - if [[ $TEST_COVERAGE ]]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover ./build/logs/clover.xml; fi
