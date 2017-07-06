@@ -1,0 +1,108 @@
+<?php
+
+namespace Tests\Unit;
+
+use Jean85\Version;
+use PHPUnit\Framework\TestCase;
+
+class PrettyVersionsTest extends TestCase
+{
+    const STABLE_VERSION = '1.1.2@51e867c70f0799790b3e82276875414ce13daaca';
+    const STABLE_VERSION_WITH_V = 'v1.7.0@93d39f1f7f9326d746203c7c056f300f7f126073';
+    const DEV_VERSION = '9999999-dev@f6e77da35a8420cc1923c3ad3f13b1a191ff0311';
+
+    /**
+     * @dataProvider fullVersionProvider
+     */
+    public function testGetFullVersion(string $originalVersion)
+    {
+        $version = new Version($originalVersion);
+
+        $this->assertSame($originalVersion, $version->getFullVersion());
+    }
+
+    public function fullVersionProvider(): array
+    {
+        return [
+            [self::STABLE_VERSION],
+            [self::STABLE_VERSION_WITH_V],
+            [self::DEV_VERSION],
+        ];
+    }
+
+    /**
+     * @dataProvider prettyVersionProvider
+     */
+    public function testGetPrettyVersion(string $originalVersion, string $expectedVersion)
+    {
+        $version = new Version($originalVersion);
+
+        $this->assertSame($expectedVersion, $version->getPrettyVersion());
+    }
+
+    public function prettyVersionProvider(): array
+    {
+        return [
+            [self::STABLE_VERSION, '1.1.2'],
+            [self::STABLE_VERSION_WITH_V, 'v1.7.0'],
+            [self::DEV_VERSION, '9999999-dev@f6e77da'],
+        ];
+    }
+
+    /**
+     * @dataProvider versionWithShortCommitProvider
+     */
+    public function testGetVersionWithShortCommit(string $originalVersion, string $expectedVersion)
+    {
+        $version = new Version($originalVersion);
+
+        $this->assertSame($expectedVersion, $version->getVersionWithShortCommit());
+    }
+
+    public function versionWithShortCommitProvider(): array
+    {
+        return [
+            [self::STABLE_VERSION, '1.1.2@51e867c'],
+            [self::STABLE_VERSION_WITH_V, 'v1.7.0@93d39f1'],
+            [self::DEV_VERSION, '9999999-dev@f6e77da'],
+        ];
+    }
+
+    /**
+     * @dataProvider shortVersionProvider
+     */
+    public function testGetShortVersion(string $originalVersion, string $expectedVersion)
+    {
+        $version = new Version($originalVersion);
+
+        $this->assertSame($expectedVersion, $version->getShortVersion());
+    }
+
+    public function shortVersionProvider(): array
+    {
+        return [
+            [self::STABLE_VERSION, '1.1.2'],
+            [self::STABLE_VERSION_WITH_V, 'v1.7.0'],
+            [self::DEV_VERSION, '9999999-dev'],
+        ];
+    }
+
+    /**
+     * @dataProvider commitHashProvider
+     */
+    public function testGetCommitHash(string $originalVersion, string $expectedHash)
+    {
+        $version = new Version($originalVersion);
+
+        $this->assertSame($expectedHash, $version->getCommitHash());
+    }
+
+    public function commitHashProvider(): array
+    {
+        return [
+            [self::STABLE_VERSION, '51e867c70f0799790b3e82276875414ce13daaca'],
+            [self::STABLE_VERSION_WITH_V, '93d39f1f7f9326d746203c7c056f300f7f126073'],
+            [self::DEV_VERSION, 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
+        ];
+    }
+}

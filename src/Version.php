@@ -1,0 +1,55 @@
+<?php
+
+namespace Jean85;
+
+class Version
+{
+    const SHORT_COMMIT_LENGTH = 7;
+
+    /** @var string */
+    private $shortVersion;
+
+    /** @var string */
+    private $commitHash;
+
+    /**
+     * Version constructor.
+     * @param string $version
+     */
+    public function __construct(string $version)
+    {
+        $splittedVersion = explode('@', $version);
+        $this->shortVersion = $splittedVersion[0];
+        $this->commitHash = $splittedVersion[1];
+        $this->versionIsTagged = preg_match('/[^v\d\.]/', $this->getShortVersion()) === 0;
+    }
+
+    public function getPrettyVersion(): string
+    {
+        if ($this->versionIsTagged) {
+            return $this->getShortVersion();
+        }
+
+        return $this->getVersionWithShortCommit();
+    }
+
+    public function getFullVersion(): string
+    {
+        return $this->getShortVersion() . '@' . $this->getCommitHash();
+    }
+
+    public function getVersionWithShortCommit(): string
+    {
+        return $this->getShortVersion() . '@' . substr($this->getCommitHash(), 0, self::SHORT_COMMIT_LENGTH);
+    }
+
+    public function getShortVersion(): string
+    {
+        return $this->shortVersion;
+    }
+
+    public function getCommitHash(): string
+    {
+        return $this->commitHash;
+    }
+}

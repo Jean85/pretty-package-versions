@@ -29,13 +29,17 @@ To use this package, use Composer:
 ## Usage
 This package provides a single class: `Jean85\PrettyVersions`.
 
-This class wraps `PackageVersions\Versions`, and provides the current static methods:
+This class wraps `PackageVersions\Versions`, and provides a single method that returns a `Jean85\Version` object for the requested package. The `Version` object has these public methods available:
 
- * `getShortVersion(string $packageName): string`: it will return just the version of the package (i.e. `6.0.0`, `v.1.7.0`, `99999-dev` etc...)
+ * `getPrettyVersion(): string`: if the requested package is a tagged version, it will return just the short version; if not, it will output the same result as `getVersionWithShortCommit()`
 
- * `getVersionWithShortCommit(string $packageName): string`: it will return the version of the package, followed by the short version of the commit hash (i.e. `6.0.0@fa5711`)
+ * `getShortVersion(): string`: it will return just the version of the package (i.e. `6.0.0`, `v.1.7.0`, `99999-dev` etc...)
 
- * `getPrettyVersion(string $packageName): string`: if the requested package is a specific version, it will return just the version; if not, it will output the same result as `getVersionWithShortCommit()`
+ * `getVersionWithShortCommit(): string`: it will return the version of the package, followed by the short version of the commit hash (i.e. `6.0.0@fa5711`)
+
+ * `getFullVersion(): string` will return the same value as `PackageVersions\Versions::getVersion()` 
+
+ * `getCommitHash(): string` will return the full commit hash 
 
 [Last stable image]: https://poser.pugx.org/Jean85/pretty-package-versions/version.svg
 [Last unstable image]: https://poser.pugx.org/Jean85/pretty-package-versions/v/unstable.svg
