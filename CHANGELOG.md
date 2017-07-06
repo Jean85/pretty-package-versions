@@ -8,4 +8,9 @@ First release
 ### Changed
  * `Jean85\PrettyVersions` wraps the `PackageVersions\Versions` class and returns a `Jean85\Version` object
  * The `Jean85\Version` has these methods available:
- 
+    * `public function getPrettyVersion(): string`
+    * `public function getFullVersion(): string`
+    * `public function getVersionWithShortCommit(): string`
+    * `public function getPackageName(): string`
+    * `public function getShortVersion(): string`
+    * `public function getCommitHash(): string`
