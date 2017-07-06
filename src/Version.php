@@ -7,6 +7,9 @@ class Version
     const SHORT_COMMIT_LENGTH = 7;
 
     /** @var string */
+    private $packageName;
+
+    /** @var string */
     private $shortVersion;
 
     /** @var string */
@@ -17,10 +20,12 @@ class Version
 
     /**
      * Version constructor.
+     * @param string $packageName
      * @param string $version
      */
-    public function __construct(string $version)
+    public function __construct(string $packageName, string $version)
     {
+        $this->packageName = $packageName;
         $splittedVersion = explode('@', $version);
         $this->shortVersion = $splittedVersion[0];
         $this->commitHash = $splittedVersion[1];
@@ -44,6 +49,11 @@ class Version
     public function getVersionWithShortCommit(): string
     {
         return $this->getShortVersion() . '@' . substr($this->getCommitHash(), 0, self::SHORT_COMMIT_LENGTH);
+    }
+
+    public function getPackageName(): string
+    {
+        return $this->packageName;
     }
 
     public function getShortVersion(): string

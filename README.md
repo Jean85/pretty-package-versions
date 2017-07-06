@@ -27,15 +27,33 @@ To use this package, use Composer:
 ```
 
 ## Usage
-This package provides a single class: `Jean85\PrettyVersions`.
+This package should be used with a single class, `Jean85\PrettyVersions`, which wraps `PackageVersions\Versions`; it provides a single method that returns a `Jean85\Version` object for the requested package, like in this example:
 
-This class wraps `PackageVersions\Versions`, and provides a single method that returns a `Jean85\Version` object for the requested package. The `Version` object has these public methods available:
+```php
+use Jean85\PrettyVersions;
+
+$version = PrettyVersions::getVersion('phpunit/phpunit');
+$version->getPrettyVersion(); // '6.0.0'
+$version->getShortVersion(); // '6.0.0'
+$version->getVersionWithShortCommit(); // '6.0.0@fa5711'
+
+$version = PrettyVersions::getVersion('roave/security-advisories');
+$version->getPrettyVersion(); // 'dev-master@7cd88c8'
+$version->getShortVersion(); // 'dev-master'
+$version->getVersionWithShortCommit(); // 'dev-master@7cd88c8'
+```
+
+### Available methods
+
+The `Jean85\Version` class has these public methods available:
 
  * `getPrettyVersion(): string`: if the requested package is a tagged version, it will return just the short version; if not, it will output the same result as `getVersionWithShortCommit()`
 
  * `getShortVersion(): string`: it will return just the version of the package (i.e. `6.0.0`, `v.1.7.0`, `99999-dev` etc...)
 
  * `getVersionWithShortCommit(): string`: it will return the version of the package, followed by the short version of the commit hash (i.e. `6.0.0@fa5711`)
+
+ * `getPackageName(): string` will return the original package name
 
  * `getFullVersion(): string` will return the same value as `PackageVersions\Versions::getVersion()` 
 

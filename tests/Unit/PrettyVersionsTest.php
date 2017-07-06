@@ -11,12 +11,19 @@ class PrettyVersionsTest extends TestCase
     const STABLE_VERSION_WITH_V = 'v1.7.0@93d39f1f7f9326d746203c7c056f300f7f126073';
     const DEV_VERSION = '9999999-dev@f6e77da35a8420cc1923c3ad3f13b1a191ff0311';
 
+    public function testGetPackageName()
+    {
+        $version = new Version('vendor/package', 'v1.0@51e867c70f0799790b3e82276875414ce13daaca');
+
+        $this->assertSame('vendor/package', $version->getPackageName());
+    }
+
     /**
      * @dataProvider fullVersionProvider
      */
     public function testGetFullVersion(string $originalVersion)
     {
-        $version = new Version($originalVersion);
+        $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($originalVersion, $version->getFullVersion());
     }
@@ -35,7 +42,7 @@ class PrettyVersionsTest extends TestCase
      */
     public function testGetPrettyVersion(string $originalVersion, string $expectedVersion)
     {
-        $version = new Version($originalVersion);
+        $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedVersion, $version->getPrettyVersion());
     }
@@ -54,7 +61,7 @@ class PrettyVersionsTest extends TestCase
      */
     public function testGetVersionWithShortCommit(string $originalVersion, string $expectedVersion)
     {
-        $version = new Version($originalVersion);
+        $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedVersion, $version->getVersionWithShortCommit());
     }
@@ -73,7 +80,7 @@ class PrettyVersionsTest extends TestCase
      */
     public function testGetShortVersion(string $originalVersion, string $expectedVersion)
     {
-        $version = new Version($originalVersion);
+        $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedVersion, $version->getShortVersion());
     }
@@ -92,7 +99,7 @@ class PrettyVersionsTest extends TestCase
      */
     public function testGetCommitHash(string $originalVersion, string $expectedHash)
     {
-        $version = new Version($originalVersion);
+        $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedHash, $version->getCommitHash());
     }

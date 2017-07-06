@@ -14,6 +14,7 @@ class PrettyVersionsTest extends TestCase
         $version = PrettyVersions::getVersion('phpunit/phpunit');
 
         $this->assertInstanceOf(Version::class, $version);
+        $this->assertSame('phpunit/phpunit', $version->getPackageName());
         $this->assertSame(Versions::getVersion('phpunit/phpunit'), $version->getFullVersion());
     }
 

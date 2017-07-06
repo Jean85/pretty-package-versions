@@ -10,6 +10,6 @@ class PrettyVersions
 
     public static function getVersion(string $packageName): Version
     {
-        return new Version(Versions::getVersion($packageName));
+        return new Version($packageName, Versions::getVersion($packageName));
     }
 }
