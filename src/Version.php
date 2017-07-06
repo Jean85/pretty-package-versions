@@ -11,6 +11,9 @@ class Version
 
     /** @var string */
     private $commitHash;
+    
+    /** @var bool */
+    private $versionIsTagged;
 
     /**
      * Version constructor.
