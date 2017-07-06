@@ -3,7 +3,11 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [1.0] - TBA
+## [1.0.1] - 2017-07-06
+### Changed
+ * Make the package lightweight thanks to the `.gitattributes` file ([#1](https://github.com/Jean85/pretty-package-versions/pull/1))
+
+## [1.0] - 2017-07-06
 First release
 ### Changed
  * `Jean85\PrettyVersions` wraps the `PackageVersions\Versions` class and returns a `Jean85\Version` object
