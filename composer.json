@@ -20,9 +20,7 @@
         "issues": "https://github.com/Jean85/pretty-package-versions/issues"
     },
     "keywords": [
-        "parallel test",
-        "testing",
-        "phpunit"
+        "package versions"
     ],
     "autoload": {
         "psr-4": {
