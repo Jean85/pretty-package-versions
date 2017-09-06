@@ -4,6 +4,8 @@ All notable changes of the `jean85/pretty-package-versions` package are document
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
 ## [1.0.2] - 2017-09-06
+### Added
+ * Add PHP 7.2 to the build matrix for official support
 ### Changed
  * Require at least `ocramius/package-versions` 1.1.3 to avoid issues when removing the package (see [this issue](https://github.com/Ocramius/PackageVersions/issues/41))
 
