@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.0.2] - 2017-09-06
+### Changed
+ * Require at least `ocramius/package-versions` 1.1.3 to avoid issues when removing the package (see [this issue](https://github.com/Ocramius/PackageVersions/issues/41))
+
 ## [1.0.1] - 2017-07-06
 ### Changed
  * Make the package lightweight thanks to the `.gitattributes` file ([#1](https://github.com/Jean85/pretty-package-versions/pull/1))
