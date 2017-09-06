@@ -16,14 +16,16 @@ matrix:
       env: 
         - TEST_COVERAGE=true
     - php: 7.1
+    - php: 7.2
     - php: nightly
   fast_finish: true
   allow_failures:
     - php: nightly
 
-install:
-  - phpenv config-rm xdebug.ini
+before_install:
+  - phpenv config-rm xdebug.ini || echo "xDebug not disabled!"
 
+install:
   - if [[ $DEPS == "low" ]]; then composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction; fi
   - if [[ $DEPS == "lock" ]]; then composer install --prefer-dist --no-interaction; fi
   - if [[ -z $DEPS ]]; then composer update --prefer-dist --prefer-stable --no-interaction; fi
