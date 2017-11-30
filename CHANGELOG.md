@@ -3,6 +3,12 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.0.3] - 2017-11-30
+### Changed
+ * Require at least `ocramius/package-versions` 1.2 to fix root package version (see [#3](https://github.com/Jean85/pretty-package-versions/issues/3))
+### Known issues
+ * Use this package with Composer >= 1.5.3 to fix root package version when in version-branch (see [#4](https://github.com/Jean85/pretty-package-versions/issues/4))
+
 ## [1.0.2] - 2017-09-06
 ### Added
  * Add PHP 7.2 to the build matrix for official support
