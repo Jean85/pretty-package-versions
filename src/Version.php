@@ -65,4 +65,9 @@ class Version
     {
         return $this->commitHash;
     }
+    
+    public function __toString(): string
+    {
+        return $this->getPrettyVersion();
+    }
 }
