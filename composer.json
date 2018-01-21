@@ -20,8 +20,16 @@
         "issues": "https://github.com/Jean85/pretty-package-versions/issues"
     },
     "keywords": [
-        "package versions"
+        "package",
+        "versions",
+        "composer",
+        "release"
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Jean85\\": "src/"

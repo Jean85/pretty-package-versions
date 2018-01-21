@@ -61,6 +61,8 @@ The `Jean85\Version` class has these public methods available:
 
  * `getCommitHash(): string` will return the full commit hash 
 
+ * `__toString(): string` will return the same as `getPrettyVersion()`
+
 [Last stable image]: https://poser.pugx.org/Jean85/pretty-package-versions/version.svg
 [Last unstable image]: https://poser.pugx.org/Jean85/pretty-package-versions/v/unstable.svg
 [Master build image]: https://travis-ci.org/Jean85/pretty-package-versions.svg

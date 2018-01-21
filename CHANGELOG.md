@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.1] - 2018-01-21
+### Added
+ * Add `Version::__toString()` method (see [#5](https://github.com/Jean85/pretty-package-versions/pull/5))
+
 ## [1.0.3] - 2017-11-30
 ### Changed
  * Require at least `ocramius/package-versions` 1.2 to fix root package version (see [#3](https://github.com/Jean85/pretty-package-versions/issues/3))
