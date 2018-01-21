@@ -47,6 +47,16 @@ class PrettyVersionsTest extends TestCase
         $this->assertSame($expectedVersion, $version->getPrettyVersion());
     }
 
+    /**
+     * @dataProvider prettyVersionProvider
+     */
+    public function testToString(string $originalVersion, string $expectedVersion)
+    {
+        $version = new Version('vendor/package', $originalVersion);
+
+        $this->assertSame($expectedVersion, (string)$version);
+    }
+
     public function prettyVersionProvider(): array
     {
         return [
