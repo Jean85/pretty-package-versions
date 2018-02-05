@@ -10,6 +10,7 @@ class PrettyVersionsTest extends TestCase
     const STABLE_VERSION = '1.1.2@51e867c70f0799790b3e82276875414ce13daaca';
     const STABLE_VERSION_WITH_V = 'v1.7.0@93d39f1f7f9326d746203c7c056f300f7f126073';
     const DEV_VERSION = '9999999-dev@f6e77da35a8420cc1923c3ad3f13b1a191ff0311';
+    const REPLACE_VERSION = 'self.version@aaabbbcccddd';
 
     public function testGetPackageName()
     {
@@ -34,6 +35,7 @@ class PrettyVersionsTest extends TestCase
             [self::STABLE_VERSION],
             [self::STABLE_VERSION_WITH_V],
             [self::DEV_VERSION],
+            [self::REPLACE_VERSION],
         ];
     }
 
@@ -63,6 +65,7 @@ class PrettyVersionsTest extends TestCase
             [self::STABLE_VERSION, '1.1.2'],
             [self::STABLE_VERSION_WITH_V, 'v1.7.0'],
             [self::DEV_VERSION, '9999999-dev@f6e77da'],
+            [self::REPLACE_VERSION, 'self.version@aaabbbc'],
         ];
     }
 
@@ -82,6 +85,7 @@ class PrettyVersionsTest extends TestCase
             [self::STABLE_VERSION, '1.1.2@51e867c'],
             [self::STABLE_VERSION_WITH_V, 'v1.7.0@93d39f1'],
             [self::DEV_VERSION, '9999999-dev@f6e77da'],
+            [self::REPLACE_VERSION, 'self.version@aaabbbc'],
         ];
     }
 
@@ -101,6 +105,7 @@ class PrettyVersionsTest extends TestCase
             [self::STABLE_VERSION, '1.1.2'],
             [self::STABLE_VERSION_WITH_V, 'v1.7.0'],
             [self::DEV_VERSION, '9999999-dev'],
+            [self::REPLACE_VERSION, 'self.version'],
         ];
     }
 
@@ -120,6 +125,7 @@ class PrettyVersionsTest extends TestCase
             [self::STABLE_VERSION, '51e867c70f0799790b3e82276875414ce13daaca'],
             [self::STABLE_VERSION_WITH_V, '93d39f1f7f9326d746203c7c056f300f7f126073'],
             [self::DEV_VERSION, 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
+            [self::REPLACE_VERSION, 'aaabbbcccddd'],
         ];
     }
 }
