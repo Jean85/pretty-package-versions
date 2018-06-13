@@ -128,4 +128,24 @@ class PrettyVersionsTest extends TestCase
             [self::REPLACE_VERSION, 'aaabbbcccddd'],
         ];
     }
+
+    /**
+     * @dataProvider shortCommitHashProvider
+     */
+    public function testGetShortCommitHash(string $originalVersion, string $expectedHash)
+    {
+        $version = new Version('vendor/package', $originalVersion);
+
+        $this->assertSame($expectedHash, $version->getShortCommitHash());
+    }
+
+    public function shortCommitHashProvider(): array
+    {
+        return [
+            [self::STABLE_VERSION, '51e867c'],
+            [self::STABLE_VERSION_WITH_V, '93d39f1'],
+            [self::DEV_VERSION, 'f6e77da'],
+            [self::REPLACE_VERSION, 'aaabbbc'],
+        ];
+    }
 }

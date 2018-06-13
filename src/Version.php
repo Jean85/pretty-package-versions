@@ -14,7 +14,7 @@ class Version
 
     /** @var string */
     private $commitHash;
-    
+
     /** @var bool */
     private $versionIsTagged;
 
@@ -48,7 +48,7 @@ class Version
 
     public function getVersionWithShortCommit(): string
     {
-        return $this->getShortVersion() . '@' . substr($this->getCommitHash(), 0, self::SHORT_COMMIT_LENGTH);
+        return $this->getShortVersion() . '@' . $this->getShortCommitHash();
     }
 
     public function getPackageName(): string
@@ -65,7 +65,12 @@ class Version
     {
         return $this->commitHash;
     }
-    
+
+    public function getShortCommitHash(): string
+    {
+        return substr($this->commitHash, 0, self::SHORT_COMMIT_LENGTH);
+    }
+
     public function __toString(): string
     {
         return $this->getPrettyVersion();
