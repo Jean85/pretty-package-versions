@@ -1,6 +1,6 @@
 {
     "name": "jean85/pretty-package-versions",
-    "description": "A wrapper for ocramius/pretty-package-versions to get pretty versions strings",
+    "description": "A wrapper for ocramius/package-versions to get pretty versions strings",
     "type": "library",
     "require": {
         "php": "^7.0",
