@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.2] - 2018-06-13
+### Added
+ * Add `Version::__getShortCommitHash()` method (see [#8](https://github.com/Jean85/pretty-package-versions/pull/8), thanks @emodric)
+
 ## [1.1] - 2018-01-21
 ### Added
  * Add `Version::__toString()` method (see [#5](https://github.com/Jean85/pretty-package-versions/pull/5))

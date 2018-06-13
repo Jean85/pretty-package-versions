@@ -61,6 +61,8 @@ The `Jean85\Version` class has these public methods available:
 
  * `getCommitHash(): string` will return the full commit hash 
 
+ * `getShortCommitHash(): string` will return the short commit hash (i.e. `fa5711`)
+
  * `__toString(): string` will return the same as `getPrettyVersion()`
 
 [Last stable image]: https://poser.pugx.org/Jean85/pretty-package-versions/version.svg
