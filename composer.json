@@ -4,7 +4,7 @@
     "type": "library",
     "require": {
         "php": "^7.0",
-        "composer/package-versions-deprecated": "^1.8.0"
+        "composer-runtime-api": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"
@@ -27,7 +27,7 @@
     ],
     "extra": {
         "branch-alias": {
-            "dev-master": "1.x-dev"
+            "dev-master": "1.4-dev"
         }
     },
     "autoload": {
