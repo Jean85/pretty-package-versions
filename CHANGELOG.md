@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.3] - 2020-04-24
+### Changed
+ * Switched dependency from `ocramius/package-versions` to its fork `composer/package-versions-deprecated`, to ensure compatibility with both PHP 7.* and Composer 2 (see [#13](https://github.com/Jean85/pretty-package-versions/pull/13), thanks @dereuromark and @seldaek)
+
 ## [1.2] - 2018-06-13
 ### Added
  * Add `Version::__getShortCommitHash()` method (see [#8](https://github.com/Jean85/pretty-package-versions/pull/8), thanks @emodric)
