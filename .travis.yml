@@ -4,6 +4,13 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+
 matrix:
   include:
     - php: 7.0
@@ -26,14 +33,18 @@ matrix:
 
 before_install:
   - phpenv config-rm xdebug.ini || echo "xDebug not disabled!"
+  - composer self-update --snapshot # use Composer 2.0
 
 install:
-  - if [[ $DEPS == "low" ]]; then composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction; fi
-  - if [[ $DEPS == "lock" ]]; then composer install --prefer-dist --no-interaction; fi
-  - if [[ -z $DEPS ]]; then composer update --prefer-dist --prefer-stable --no-interaction; fi
+  - composer update --prefer-dist --prefer-stable --no-interaction
 
-script:
-  - if [[ $TEST_COVERAGE ]]; then phpdbg -qrr vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml; else vendor/bin/phpunit; fi
+script: >-
+  vendor/bin/phpunit --coverage-clover=build/coverage-report.xml &&
+  bash <(curl -s https://codecov.io/bash) -f build/coverage-report.xml
 
-after_success:
-  - if [[ $TEST_COVERAGE ]]; then wget https://scrutinizer-ci.com/ocular.phar && php ocular.phar code-coverage:upload --format=php-clover --revision=$TRAVIS_COMMIT ./build/logs/clover.xml; fi
+jobs:
+  fast_finish: true
+  include:
+    - name: Lowest deps
+      php: 7.0
+      install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction
