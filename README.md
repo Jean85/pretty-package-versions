@@ -9,7 +9,7 @@
 [![Codecov](https://codecov.io/gh/Jean85/pretty-package-versions/branch/master/graph/badge.svg)](https://codecov.io/gh/Jean85/pretty-package-versions)
 [![SL Insight][SL Insight image]][SL Insight link]
 
-A wrapper for [ocramius/package-versions](https://packagist.org/packages/ocramius/package-versions) to get pretty versions strings.
+A small, indipendent wrapper to get pretty versions strings of your dependencies.
 
 ## Installation
 To use this package, use Composer:
@@ -19,14 +19,24 @@ To use this package, use Composer:
 
 ```json
 {
-    "require-dev": {
-        "jean85/pretty-package-versions": "~1.0"
+    "require": {
+        "jean85/pretty-package-versions": "^1.2"
     }
 }
 ```
+## Compatibility
+This packages was born as a thin wrapper for [ocramius/package-versions](https://packagist.org/packages/ocramius/package-versions); with the advent of Composer 2, this is no longer needed, since we can use directly `Composer\InstalledVersions`. This led to this version compatibility chart:
+
+|`pretty-package-versions`| Composer         | Dependency used
+|-------------------------|------------------|-----------------|
+| Up to 1.2               | 1.x only         | `ocramius/package-versions`
+| 1.3                     | Both 1.x and 2.x | `composer/package-versions-deprecated`, fork of `ocramius/package-versions` |
+| 1.4+                    | 2.x only         | None            |
+
+This means that, with this package, you can obtain pretty versions without tying your user to any specific Composer version, with a smooth upgrade path.
 
 ## Usage
-This package should be used with a single class, `Jean85\PrettyVersions`, which wraps `PackageVersions\Versions`; it provides a single method that returns a `Jean85\Version` object for the requested package, like in this example:
+This package should be used with a single class, `Jean85\PrettyVersions`: it provides a single method that returns a `Jean85\Version` object for the requested package, like in this example:
 
 ```php
 use Jean85\PrettyVersions;
