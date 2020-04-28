@@ -7,8 +7,8 @@
         "composer-runtime-api": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0",
-        "monolog/monolog": "*"
+        "jean85/composer-provided-replaced-stub-package": "^1.0",
+        "phpunit/phpunit": "^6.0"
     },
     "license": "MIT",
     "authors": [
