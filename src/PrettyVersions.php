@@ -12,6 +12,12 @@ class PrettyVersions
     {
         $version = InstalledVersions::getPrettyVersion($packageName) . '@' . InstalledVersions::getReference($packageName);
         
+        if ($version === '@') {
+            $providedVersions = InstalledVersions::getRawData()['versions'][$packageName]['provided'];
+
+            return new ReplacedPackageVersion($packageName, array_pop($providedVersions));
+        }
+
         return new Version($packageName, $version);
     }
 }

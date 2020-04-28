@@ -2,7 +2,7 @@
 
 namespace Jean85;
 
-class Version
+class Version implements VersionInterface
 {
     const SHORT_COMMIT_LENGTH = PrettyVersions::SHORT_COMMIT_LENGTH;
 
