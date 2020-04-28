@@ -4,6 +4,8 @@ namespace Tests\Functional;
 
 use Composer\InstalledVersions;
 use Jean85\PrettyVersions;
+use Jean85\ProvidedPackageVersion;
+use Jean85\ReplacedPackageVersion;
 use Jean85\Version;
 use PHPUnit\Framework\TestCase;
 
@@ -32,7 +34,7 @@ class PrettyVersionsTest extends TestCase
         $packageName = 'psr/log-implementation';
         $version = PrettyVersions::getVersion($packageName);
 
-        $this->assertInstanceOf(Version::class, $version);
+        $this->assertInstanceOf(ProvidedPackageVersion::class, $version);
         $this->assertSame($packageName, $version->getPackageName());
         $this->assertSame('1.0.0', $version->getPrettyVersion());
         $this->assertSame('1.0.0', $version->getShortVersion());
@@ -47,12 +49,12 @@ class PrettyVersionsTest extends TestCase
         $packageName = 'monolog/monolog';
         $version = PrettyVersions::getVersion($packageName);
 
-        $this->assertInstanceOf(Version::class, $version);
+        $this->assertInstanceOf(ReplacedPackageVersion::class, $version);
         $this->assertSame($packageName, $version->getPackageName());
-        $this->assertSame('1.0.0', $version->getPrettyVersion());
-        $this->assertSame('1.0.0', $version->getShortVersion());
-        $this->assertSame('1.0.0', $version->getVersionWithShortCommit());
-        $this->assertSame('1.0.0', $version->getFullVersion());
+        $this->assertSame('*', $version->getPrettyVersion());
+        $this->assertSame('*', $version->getShortVersion());
+        $this->assertSame('*', $version->getVersionWithShortCommit());
+        $this->assertSame('*', $version->getFullVersion());
         $this->assertSame('', $version->getCommitHash());
         $this->assertSame('', $version->getShortCommitHash());
     }
