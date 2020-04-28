@@ -5,6 +5,7 @@ namespace Tests\Functional;
 use Composer\InstalledVersions;
 use Jean85\PrettyVersions;
 use Jean85\Version;
+use phpDocumentor\Reflection\Types\Void_;
 use PHPUnit\Framework\TestCase;
 
 class PrettyVersionsTest extends TestCase
@@ -25,5 +26,20 @@ class PrettyVersionsTest extends TestCase
         $this->expectException(\Throwable::class);
 
         PrettyVersions::getVersion('non-existent-vendor/non-existent-package');
+    }
+
+    public function testGetVersionOfProvidedPackageRegression()
+    {
+        $packageName = 'psr/log-implementation'; // provided by monolog/monolog
+        $version = PrettyVersions::getVersion($packageName);
+
+        $this->assertInstanceOf(Version::class, $version);
+        $this->assertSame($packageName, $version->getPackageName());
+        $this->assertSame('1.0.0', $version->getPrettyVersion());
+        $this->assertSame('1.0.0', $version->getShortVersion());
+        $this->assertSame('1.0.0', $version->getVersionWithShortCommit());
+        $this->assertSame('1.0.0', $version->getFullVersion());
+        $this->assertNull($version->getCommitHash());
+        $this->assertNull($version->getShortCommitHash());
     }
 }
