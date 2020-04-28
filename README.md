@@ -52,6 +52,8 @@ $version->getShortVersion(); // 'dev-master'
 $version->getVersionWithShortCommit(); // 'dev-master@7cd88c8'
 ```
 
+> **NOTE**: since 1.4.1 the return is an object implementing `Jean85\VersionInterface` with the same API; implementing objects are `Version`, `ProvidedPackageVersion` and `ReplacedPackageVersion`.
+
 The `Version` class has also a `__toString()` method implemented, so it can be easily cast to a string; the result would be the same as calling the `getPrettyVersion()` method.
 
 ### Available methods

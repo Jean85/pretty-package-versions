@@ -3,6 +3,20 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.4.1] - TBA
+### SMALL BREAKING CHANGE
+ * Small change in the `Jean85\PrettyVersions::getVersion` signature:
+```diff
+-    public static function getVersion(string $packageName): Jean85\Version
++    public static function getVersion(string $packageName): Jean85\VersionInterface
+```
+ This could lead to some breakage in static analysis, but it shouldn't break runtime, since the exposed API is the same. Change of behavior is only possible if you previosly did a `instaceof Version`. 
+### Added
+ * Added `Jean85\VersionInterface`, with the same API of `Jean85\Version`
+ * Added `Jean85\ReplacedPackageVersion` and `Jean85\ProvidedPackageVersion`, both implementing `Jean85\Version`
+### Fixed
+ * Fixed bug when requesting a replaced or provided package
+
 ## [1.4] - 2020-04-28
 ### Removed
  * Drop support for Composer 1
