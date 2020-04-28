@@ -3,6 +3,12 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.4] - 2020-04-28
+### Removed
+ * Drop support for Composer 1
+ * Drop dependency on any package
+ * Drop Scrutinizer, use Codecov for test coverage
+
 ## [1.3] - 2020-04-24
 ### Changed
  * Switched dependency from `ocramius/package-versions` to its fork `composer/package-versions-deprecated`, to ensure compatibility with both PHP 7.* and Composer 2 (see [#13](https://github.com/Jean85/pretty-package-versions/pull/13), thanks @dereuromark and @seldaek)
