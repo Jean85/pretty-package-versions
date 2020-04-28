@@ -4,7 +4,7 @@ namespace Jean85;
 
 class Version
 {
-    const SHORT_COMMIT_LENGTH = 7;
+    const SHORT_COMMIT_LENGTH = PrettyVersions::SHORT_COMMIT_LENGTH;
 
     /** @var string */
     private $packageName;
@@ -18,11 +18,6 @@ class Version
     /** @var bool */
     private $versionIsTagged;
 
-    /**
-     * Version constructor.
-     * @param string $packageName
-     * @param string $version
-     */
     public function __construct(string $packageName, string $version)
     {
         $this->packageName = $packageName;
