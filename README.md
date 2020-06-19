@@ -27,7 +27,7 @@ To install, use Composer:
 }
 ```
 ## Compatibility
-This packages was born as a thin wrapper for [ocramius/package-versions](https://packagist.org/packages/ocramius/package-versions); with the advent of Composer 2, this is no longer needed, since we can use directly `Composer\InstalledVersions`. This led to this version compatibility chart:
+This package was born as a thin wrapper for [ocramius/package-versions](https://packagist.org/packages/ocramius/package-versions); with the advent of Composer 2, this is no longer needed, since we can use directly `Composer\InstalledVersions`. This led to this version compatibility chart:
 
 |`pretty-package-versions`| Composer         | Dependency used
 |-------------------------|------------------|-----------------|
