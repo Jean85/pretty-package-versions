@@ -30,9 +30,3 @@ jobs:
     - name: PHP 8
       php: nightly
       install: composer update --ignore-platform-reqs --prefer-dist --prefer-stable --no-interaction
-    - stage: Additional checks
-      name: Backward compatibility check
-      php: 7.4
-      script:
-        - composer require --dev roave/backward-compatibility-check
-        - vendor/bin/roave-backward-compatibility-check
