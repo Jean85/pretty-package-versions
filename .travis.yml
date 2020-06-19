@@ -10,7 +10,6 @@ php:
   - 7.2
   - 7.3
   - 7.4
-  - nightly
 
 install:
   - composer update --prefer-dist --prefer-stable --no-interaction
@@ -28,6 +27,9 @@ jobs:
     - name: Composer 2
       php: 7.0
       before_install: composer self-update --snapshot
+    - name: PHP 8
+      php: nightly
+      install: composer update --ignore-platform-reqs --prefer-dist --prefer-stable --no-interaction
     - stage: Additional checks
       name: Backward compatibility check
       php: 7.4
