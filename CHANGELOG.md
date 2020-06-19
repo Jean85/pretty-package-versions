@@ -3,6 +3,17 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.5] - TBA
+This release is intended to change the future release plan of this package. Please require the package with `^1.5 || ^2.0` to ensure full functionalities and future Composer 2 compatibility.
+
+### Added
+ * Add `PrettyVersions::getRootPackageName` as a compatibility layer to be used in place of `PackageVersions\Versions::ROOT_PACKAGE_NAME`, which would be a transient dependency (#23)
+ * Add `PrettyVersions::getRootPackageVersion`, a shortcut to `PrettyVersions::getVersion(PrettyVersions::getRootPackageName())` (#23)
+
+### Changed
+ * Roll back to use `composer/package-versions-deprecated` as in 1.3 (see #21 & #22)
+ 
+
 ## [1.4] - 2020-04-28
 ### Removed
  * Drop support for Composer 1
@@ -11,21 +22,21 @@ All notable changes of the `jean85/pretty-package-versions` package are document
 
 ## [1.3] - 2020-04-24
 ### Changed
- * Switched dependency from `ocramius/package-versions` to its fork `composer/package-versions-deprecated`, to ensure compatibility with both PHP 7.* and Composer 2 (see [#13](https://github.com/Jean85/pretty-package-versions/pull/13), thanks @dereuromark and @seldaek)
+ * Switched dependency from `ocramius/package-versions` to its fork `composer/package-versions-deprecated`, to ensure compatibility with both PHP 7.* and Composer 2 (see #13, thanks @dereuromark and @seldaek)
 
 ## [1.2] - 2018-06-13
 ### Added
- * Add `Version::__getShortCommitHash()` method (see [#8](https://github.com/Jean85/pretty-package-versions/pull/8), thanks @emodric)
+ * Add `Version::__getShortCommitHash()` method (see #8, thanks @emodric)
 
 ## [1.1] - 2018-01-21
 ### Added
- * Add `Version::__toString()` method (see [#5](https://github.com/Jean85/pretty-package-versions/pull/5))
+ * Add `Version::__toString()` method (see #5)
 
 ## [1.0.3] - 2017-11-30
 ### Changed
- * Require at least `ocramius/package-versions` 1.2 to fix root package version (see [#3](https://github.com/Jean85/pretty-package-versions/issues/3))
+ * Require at least `ocramius/package-versions` 1.2 to fix root package version (see #3)
 ### Known issues
- * Use this package with Composer >= 1.5.3 to fix root package version when in version-branch (see [#4](https://github.com/Jean85/pretty-package-versions/issues/4))
+ * Use this package with Composer >= 1.5.3 to fix root package version when in version-branch (see #4)
 
 ## [1.0.2] - 2017-09-06
 ### Added
@@ -35,7 +46,7 @@ All notable changes of the `jean85/pretty-package-versions` package are document
 
 ## [1.0.1] - 2017-07-06
 ### Changed
- * Make the package lightweight thanks to the `.gitattributes` file ([#1](https://github.com/Jean85/pretty-package-versions/pull/1))
+ * Make the package lightweight thanks to the `.gitattributes` file (#1)
 
 ## [1.0] - 2017-07-06
 First release
