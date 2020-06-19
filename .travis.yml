@@ -11,9 +11,6 @@ php:
   - 7.3
   - 7.4
 
-before_install:
-  - composer self-update --snapshot # use Composer 2.0
-
 install:
   - composer update --prefer-dist --prefer-stable --no-interaction
 
@@ -27,3 +24,6 @@ jobs:
     - name: Lowest deps
       php: 7.0
       install: composer update --prefer-lowest --prefer-dist --prefer-stable --no-interaction
+    - name: Composer 2
+      php: 7.0
+      before_install: composer self-update --snapshot
