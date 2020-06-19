@@ -9,23 +9,25 @@
 [![Codecov](https://codecov.io/gh/Jean85/pretty-package-versions/branch/master/graph/badge.svg)](https://codecov.io/gh/Jean85/pretty-package-versions)
 [![SL Insight][SL Insight image]][SL Insight link]
 
-A small, indipendent wrapper to get pretty versions strings of your dependencies.
+A small, independent wrapper to get pretty versions strings of your dependencies.
 
 ## Installation
-To use this package, use Composer:
+*It's suggested to use this package with a constraint of `^1.5 || ^2.0`, to obtain all the functionalities and guarantee future compatibility with Composer 2.
 
- * from CLI: `composer require jean85/pretty-package-versions`
+To install, use Composer:
+
+ * from CLI: `composer require 'jean85/pretty-package-versions:^1.5 || ^2.0'`
  * or, directly in your `composer.json`:
 
 ```json
 {
     "require": {
-        "jean85/pretty-package-versions": "^1.2"
+        "jean85/pretty-package-versions": "^1.5 || ^2.0"
     }
 }
 ```
 ## Compatibility
-This packages was born as a thin wrapper for [ocramius/package-versions](https://packagist.org/packages/ocramius/package-versions); with the advent of Composer 2, this is no longer needed, since we can use directly `Composer\InstalledVersions`. This led to this version compatibility chart:
+This package was born as a thin wrapper for [ocramius/package-versions](https://packagist.org/packages/ocramius/package-versions); with the advent of Composer 2, this is no longer needed, since we can use directly `Composer\InstalledVersions`. This led to this version compatibility chart:
 
 |`pretty-package-versions`| Composer         | Dependency used
 |-------------------------|------------------|-----------------|
@@ -75,6 +77,12 @@ The `Jean85\Version` class has these public methods available:
  * `getShortCommitHash(): string` will return the short commit hash (i.e. `fa5711`)
 
  * `__toString(): string` will return the same as `getPrettyVersion()`
+
+### Since 1.5
+Since the 1.5 release, there are two additional methods available:
+
+ * `PrettyVersions::getRootPackageName` returns the package name of the current (root) project, so basically the `name` property value in your `composer.json`; it is a compatibility layer to be used in place of `PackageVersions\Versions::ROOT_PACKAGE_NAME`, which would be a transient dependency and it's not guaranteed to be present
+ * `PrettyVersions::getRootPackageVersion`, which is a shortcut to `PrettyVersions::getVersion(PrettyVersions::getRootPackageName())`
 
 [Last stable image]: https://poser.pugx.org/Jean85/pretty-package-versions/version.svg
 [Last unstable image]: https://poser.pugx.org/Jean85/pretty-package-versions/v/unstable.svg

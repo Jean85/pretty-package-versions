@@ -24,4 +24,17 @@ class PrettyVersionsTest extends TestCase
 
         PrettyVersions::getVersion('non-existent-vendor/non-existent-package');
     }
+
+    public function testGetRootPackageName()
+    {
+        $this->assertSame('jean85/pretty-package-versions', PrettyVersions::getRootPackageName());
+    }
+
+    public function testGetRootPackageVersion()
+    {
+        $version = PrettyVersions::getRootPackageVersion();
+
+        $this->assertSame('jean85/pretty-package-versions', $version->getPackageName());
+        $this->assertEquals(PrettyVersions::getVersion('jean85/pretty-package-versions'), $version);
+    }
 }
