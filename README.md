@@ -31,9 +31,11 @@ This packages was born as a thin wrapper for [ocramius/package-versions](https:/
 |-------------------------|------------------|-----------------|
 | Up to 1.2               | 1.x only         | `ocramius/package-versions`
 | 1.3                     | Both 1.x and 2.x | `composer/package-versions-deprecated`, fork of `ocramius/package-versions` |
-| 1.4+                    | 2.x only         | None            |
+| 1.4                     | 2.x only         | None            |
+| 1.5+                    | Both 1.x and 2.x | `composer/package-versions-deprecated`, fork of `ocramius/package-versions` |
+| 2.0 (unreleased)        | 2.x only         | None            |
 
-This means that, with this package, you can obtain pretty versions without tying your user to any specific Composer version, with a smooth upgrade path.
+This means that, with this package, you can obtain pretty versions without tying your user to any specific Composer version, with a smooth upgrade path. The release of 1.4 was reverted due to some discussion in [#21](https://github.com/Jean85/pretty-package-versions/issues/21) and related issues.
 
 ## Usage
 This package should be used with a single class, `Jean85\PrettyVersions`: it provides a single method that returns a `Jean85\Version` object for the requested package, like in this example:
