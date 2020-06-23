@@ -3,7 +3,7 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [1.5] - TBA
+## [1.5] - 2020-06-23
 This release is intended to change the future release plan of this package. Please require the package with `^1.5 || ^2.0` to ensure full functionalities and future Composer 2 compatibility.
 
 ### Added
@@ -12,7 +12,6 @@ This release is intended to change the future release plan of this package. Plea
 
 ### Changed
  * Roll back to use `composer/package-versions-deprecated` as in 1.3 (see #21 & #22)
- 
 
 ## [1.4] - 2020-04-28
 ### Removed
