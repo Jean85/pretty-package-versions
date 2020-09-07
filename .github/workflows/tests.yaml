@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - master
-      - test-github-actions
 
 jobs:
   tests:
