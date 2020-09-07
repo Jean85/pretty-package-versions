@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jean85\\": "src/"
+            "Jean85\\": "src"
         }
     },
     "autoload-dev": {
