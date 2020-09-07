@@ -1,32 +1,37 @@
 name: Tests
 
 on:
-    pull_request: null
-    push:
-        branches:
-            - master
-            - test-github-actions
+  pull_request: null
+  push:
+    branches:
+      - master
+      - test-github-actions
 
 jobs:
-    tests:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                php: ['7.0', '7.1', '7.2', '7.3', '7.4']
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php:
+          - '7.0'
+          - '7.1'
+          - '7.2'
+          - '7.3'
+          - '7.4'
 
-        name: PHP ${{ matrix.php }} tests
-        steps:
-            # checkout git
-            -   uses: actions/checkout@v2
+    name: PHP ${{ matrix.php }} tests
+    steps:
+      # checkout git
+      - uses: actions/checkout@v2
 
-            # setup PHP
-            -   uses: shivammathur/setup-php@v1
-                with:
-                    php-version: ${{ matrix.php }}
-                    coverage: none
+      # setup PHP
+      - uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
 
-            -   run: composer install --no-progress --ansi
-            -   run: vendor/bin/phpunit --coverage-clover=coverage.xml
-            - uses: codecov/codecov-action@v1
-                with:
-                    file: ./coverage.xml
+      - run: composer install --no-progress --ansi
+      - run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      - uses: codecov/codecov-action@v1
+        with:
+          file: './coverage.xml'
