@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-composer.lock
-vendor
-=======
 /vendor
 composer.lock
->>>>>>> drop composer.lock, as for package does not bring much value
