@@ -27,10 +27,11 @@ jobs:
       - uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php }}
-          coverage: none
+          coverage: xdebug
 
       - run: composer install --no-progress --ansi
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - uses: codecov/codecov-action@v1
         with:
           file: './coverage.xml'
+          fail_ci_if_error: true
