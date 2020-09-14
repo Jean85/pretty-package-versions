@@ -17,6 +17,7 @@ jobs:
           - '7.2'
           - '7.3'
           - '7.4'
+          - '8.0'
 
     name: PHP ${{ matrix.php }} tests
     steps:
@@ -30,8 +31,15 @@ jobs:
           coverage: xdebug
 
       - run: composer install --no-progress --ansi
+        if: matrix.php != '8.0'
+      - run: composer install --no-progress --ansi --ignore-platform-reqs
+        if: matrix.php == '8.0'
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        if: matrix.php != '8.0'
+      - run: vendor/bin/phpunit
+        if: matrix.php == '8.0'
       - uses: codecov/codecov-action@v1
+        if: matrix.php != '8.0'
         with:
           file: './coverage.xml'
           fail_ci_if_error: true

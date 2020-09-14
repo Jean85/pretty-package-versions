@@ -3,11 +3,11 @@
     "description": "A wrapper for ocramius/package-versions to get pretty versions strings",
     "type": "library",
     "require": {
-        "php": "^7.0",
+        "php": "^7.0|^8.0",
         "composer/package-versions-deprecated": "^1.8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.0"
+        "phpunit/phpunit": "^6.0|^8.5|^9.2"
     },
     "license": "MIT",
     "authors": [

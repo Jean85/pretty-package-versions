@@ -1,5 +1,5 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.1/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          backupGlobals="false"
          colors="true"
          bootstrap="vendor/autoload.php"
@@ -15,9 +15,6 @@
         <testsuite name="unit">
             <directory>./tests/Unit/</directory>
         </testsuite>
-    </testsuites>
-
-    <testsuites>
         <testsuite name="functional">
             <directory>./tests/Functional/</directory>
         </testsuite>

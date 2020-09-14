@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.5.1] - 2020-09-14
+### Added
+ * PHP 8 support (#28)
+
 ## [1.5] - 2020-06-23
 This release is intended to change the future release plan of this package. Please require the package with `^1.5 || ^2.0` to ensure full functionalities and future Composer 2 compatibility.
 
