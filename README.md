@@ -1,13 +1,11 @@
 # jean85/pretty-package-versions
 
-[![PHP Version](https://img.shields.io/badge/php-%5E7.0-blue.svg)](https://img.shields.io/badge/php-%5E7.0-blue.svg)
+![PHP Version](https://img.shields.io/badge/php-%5E7.0%7C%5E8.0-blue)
 [![Stable release][Last stable image]][Packagist link]
 [![Unstable release][Last unstable image]][Packagist link]
-[![composer.lock available](https://poser.pugx.org/jean85/pretty-package-versions/composerlock)](https://packagist.org/packages/jean85/pretty-package-versions)
 
-[![Build status][Master build image]][Master build link]
+[![Build status](https://img.shields.io/github/workflow/status/Jean85/pretty-package-versions/Tests)](https://github.com/Jean85/pretty-package-versions/actions)
 [![Codecov](https://codecov.io/gh/Jean85/pretty-package-versions/branch/master/graph/badge.svg)](https://codecov.io/gh/Jean85/pretty-package-versions)
-[![SL Insight][SL Insight image]][SL Insight link]
 
 A small, independent wrapper to get pretty versions strings of your dependencies.
 
@@ -86,9 +84,4 @@ Since the 1.5 release, there are two additional methods available:
 
 [Last stable image]: https://poser.pugx.org/Jean85/pretty-package-versions/version.svg
 [Last unstable image]: https://poser.pugx.org/Jean85/pretty-package-versions/v/unstable.svg
-[Master build image]: https://travis-ci.org/Jean85/pretty-package-versions.svg
-[SL Insight image]: https://insight.sensiolabs.com/projects/275dfe5b-5b16-42df-949b-a7db85a8fe4e/mini.png
-
 [Packagist link]: https://packagist.org/packages/Jean85/pretty-package-versions
-[Master build link]: https://travis-ci.org/Jean85/pretty-package-versions
-[SL Insight link]: https://insight.sensiolabs.com/projects/275dfe5b-5b16-42df-949b-a7db85a8fe4e
