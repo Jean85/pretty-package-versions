@@ -35,7 +35,11 @@ jobs:
       - run: composer install --no-progress --ansi --ignore-platform-reqs
         if: matrix.php == '8.0'
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
+        if: matrix.php != '8.0'
+      - run: vendor/bin/phpunit
+        if: matrix.php == '8.0'
       - uses: codecov/codecov-action@v1
+        if: matrix.php != '8.0'
         with:
           file: './coverage.xml'
           fail_ci_if_error: true
