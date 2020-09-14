@@ -31,9 +31,9 @@ jobs:
           coverage: xdebug
 
       - run: composer install --no-progress --ansi
-        if: matrix.php-version != '8.0'
+        if: ${{ matrix.php }} != '8.0'
       - run: composer install --no-progress --ansi --ignore-platform-reqs
-        if: matrix.php-version == '8.0'
+        if: ${{ matrix.php }} == '8.0'
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - uses: codecov/codecov-action@v1
         with:
