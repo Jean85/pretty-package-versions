@@ -10,28 +10,26 @@ class Version
     private $packageName;
 
     /** @var string */
-    private $shortVersion;
+    private $prettyVersion;
 
     /** @var string */
-    private $commitHash;
+    private $reference;
 
     /** @var bool */
     private $versionIsTagged;
 
-    public function __construct(string $packageName, string $version)
+    public function __construct(string $packageName, string $prettyVersion, string $reference)
     {
         $this->packageName = $packageName;
-        $splittedVersion = explode('@', $version);
-        var_dump($version, $splittedVersion);
-        $this->shortVersion = $splittedVersion[0];
-        $this->commitHash = $splittedVersion[1];
+        $this->prettyVersion = $prettyVersion;
+        $this->reference = $reference;
         $this->versionIsTagged = preg_match('/[^v\d\.]/', $this->getShortVersion()) === 0;
     }
 
     public function getPrettyVersion(): string
     {
         if ($this->versionIsTagged) {
-            return $this->getShortVersion();
+            return $this->prettyVersion;
         }
 
         return $this->getVersionWithShortCommit();
@@ -39,12 +37,12 @@ class Version
 
     public function getFullVersion(): string
     {
-        return $this->getShortVersion() . '@' . $this->getCommitHash();
+        return $this->prettyVersion . '@' . $this->getReference();
     }
 
     public function getVersionWithShortCommit(): string
     {
-        return $this->getShortVersion() . '@' . $this->getShortCommitHash();
+        return $this->prettyVersion . '@' . $this->getShortReference();
     }
 
     public function getPackageName(): string
@@ -54,17 +52,17 @@ class Version
 
     public function getShortVersion(): string
     {
-        return $this->shortVersion;
+        return $this->prettyVersion;
     }
 
-    public function getCommitHash(): string
+    public function getReference(): string
     {
-        return $this->commitHash;
+        return $this->reference;
     }
 
-    public function getShortCommitHash(): string
+    public function getShortReference(): string
     {
-        return substr($this->commitHash, 0, self::SHORT_COMMIT_LENGTH);
+        return substr($this->reference, 0, self::SHORT_COMMIT_LENGTH);
     }
 
     public function __toString(): string

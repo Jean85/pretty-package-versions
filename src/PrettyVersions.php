@@ -10,16 +10,20 @@ class PrettyVersions
 
     public static function getVersion(string $packageName): Version
     {
-        return new Version($packageName, InstalledVersions::getVersion($packageName));
+        return new Version(
+            $packageName,
+            InstalledVersions::getPrettyVersion($packageName), 
+            InstalledVersions::getReference($packageName) 
+        );
     }
 
     public static function getRootPackageName(): string
     {
-        return InstalledVersions::getRootPackage();
+        return InstalledVersions::getRootPackage()['name'];
     }
 
     public static function getRootPackageVersion(): Version
     {
-        return self::getVersion(InstalledVersions::getRootPackage());
+        return self::getVersion(self::getRootPackageName());
     }
 }

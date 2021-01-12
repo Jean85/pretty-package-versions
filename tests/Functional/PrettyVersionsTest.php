@@ -13,7 +13,10 @@ class PrettyVersionsTest extends TestCase
         $version = PrettyVersions::getVersion('phpunit/phpunit');
 
         $this->assertSame('phpunit/phpunit', $version->getPackageName());
-        $this->assertSame(InstalledVersions::getVersion('phpunit/phpunit'), $version->getFullVersion());
+        $expectedFullVersion = InstalledVersions::getPrettyVersion('phpunit/phpunit')
+            . '@'
+            . InstalledVersions::getReference('phpunit/phpunit');
+        $this->assertSame($expectedFullVersion, $version->getFullVersion());
     }
 
     public function testVersionLetsExceptionRaise()
