@@ -22,6 +22,7 @@ class Version
     {
         $this->packageName = $packageName;
         $splittedVersion = explode('@', $version);
+        var_dump($version, $splittedVersion);
         $this->shortVersion = $splittedVersion[0];
         $this->commitHash = $splittedVersion[1];
         $this->versionIsTagged = preg_match('/[^v\d\.]/', $this->getShortVersion()) === 0;

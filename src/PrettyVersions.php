@@ -2,7 +2,7 @@
 
 namespace Jean85;
 
-use PackageVersions\Versions;
+use Composer\InstalledVersions;
 
 class PrettyVersions
 {
@@ -10,16 +10,16 @@ class PrettyVersions
 
     public static function getVersion(string $packageName): Version
     {
-        return new Version($packageName, Versions::getVersion($packageName));
+        return new Version($packageName, InstalledVersions::getVersion($packageName));
     }
 
     public static function getRootPackageName(): string
     {
-        return Versions::ROOT_PACKAGE_NAME;
+        return InstalledVersions::getRootPackage();
     }
 
     public static function getRootPackageVersion(): Version
     {
-        return self::getVersion(Versions::ROOT_PACKAGE_NAME);
+        return self::getVersion(InstalledVersions::getRootPackage());
     }
 }

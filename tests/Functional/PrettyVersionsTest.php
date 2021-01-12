@@ -2,9 +2,8 @@
 
 namespace Tests\Functional;
 
+use Composer\InstalledVersions;
 use Jean85\PrettyVersions;
-use Jean85\Version;
-use PackageVersions\Versions;
 use PHPUnit\Framework\TestCase;
 
 class PrettyVersionsTest extends TestCase
@@ -13,9 +12,8 @@ class PrettyVersionsTest extends TestCase
     {
         $version = PrettyVersions::getVersion('phpunit/phpunit');
 
-        $this->assertInstanceOf(Version::class, $version);
         $this->assertSame('phpunit/phpunit', $version->getPackageName());
-        $this->assertSame(Versions::getVersion('phpunit/phpunit'), $version->getFullVersion());
+        $this->assertSame(InstalledVersions::getVersion('phpunit/phpunit'), $version->getFullVersion());
     }
 
     public function testVersionLetsExceptionRaise()
