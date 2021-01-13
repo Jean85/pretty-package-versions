@@ -4,7 +4,6 @@ on:
   pull_request: null
   push:
     branches:
-      - master
       - 2.x
 
 jobs:
@@ -13,7 +12,6 @@ jobs:
     strategy:
       matrix:
         php:
-          - '7.0'
           - '7.1'
           - '7.2'
           - '7.3'
