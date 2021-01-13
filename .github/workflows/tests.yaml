@@ -22,13 +22,16 @@ jobs:
     steps:
       # checkout git
       - uses: actions/checkout@v2
-
+      # cache
+      - uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: ${{ matrix.php }}
       # setup PHP
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: xdebug
-
       - run: composer install --no-progress --ansi
         if: matrix.php != '8.0'
       - run: composer install --no-progress --ansi --ignore-platform-reqs
@@ -42,3 +45,18 @@ jobs:
         with:
           file: './coverage.xml'
           fail_ci_if_error: true
+  PHP-CS-Fixer:
+    runs-on: ubuntu-latest
+    name: Code style
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: '7.4'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+      - run: composer install --no-progress --ansi
+      - run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run
