@@ -70,7 +70,7 @@ class VersionTest extends TestCase
      */
     public function testGetVersionWithShortCommit(Version $version, string $expectedVersion)
     {
-        $this->assertSame($expectedVersion, $version->getVersionWithShortCommit());
+        $this->assertSame($expectedVersion, $version->getVersionWithShortReference());
     }
 
     public function versionWithShortCommitProvider(): array

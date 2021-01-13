@@ -32,7 +32,7 @@ class Version
             return $this->prettyVersion;
         }
 
-        return $this->getVersionWithShortCommit();
+        return $this->getVersionWithShortReference();
     }
 
     public function getFullVersion(): string
@@ -40,7 +40,7 @@ class Version
         return $this->prettyVersion . '@' . $this->getReference();
     }
 
-    public function getVersionWithShortCommit(): string
+    public function getVersionWithShortReference(): string
     {
         return $this->prettyVersion . '@' . $this->getShortReference();
     }
