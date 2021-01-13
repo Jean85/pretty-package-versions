@@ -9,15 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 class VersionTest extends TestCase
 {
-    const STABLE_VERSION = ['1.1.2', '51e867c70f0799790b3e82276875414ce13daaca'];
+    private const STABLE_VERSION = ['1.1.2', '51e867c70f0799790b3e82276875414ce13daaca'];
+    private const STABLE_VERSION_WITH_V = ['v1.7.0', '93d39f1f7f9326d746203c7c056f300f7f126073'];
+    private const DEV_VERSION = ['9999999-dev', 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'];
+    private const REPLACE_VERSION = ['self.version', 'aaabbbcccddd'];
 
-    const STABLE_VERSION_WITH_V = ['v1.7.0', '93d39f1f7f9326d746203c7c056f300f7f126073'];
-
-    const DEV_VERSION = ['9999999-dev', 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'];
-
-    const REPLACE_VERSION = ['self.version', 'aaabbbcccddd'];
-
-    public function testGetPackageName()
+    public function testGetPackageName(): void
     {
         $version = new Version('vendor/package', 'v1.0', '51e867c70f0799790b3e82276875414ce13daaca');
 
@@ -27,13 +24,16 @@ class VersionTest extends TestCase
     /**
      * @dataProvider fullVersionProvider
      */
-    public function testGetFullVersion(string $prettyVersion, string $reference)
+    public function testGetFullVersion(string $prettyVersion, string $reference): void
     {
         $version = new Version('vendor/package', $prettyVersion, $reference);
 
         $this->assertSame($prettyVersion . '@' . $reference, $version->getFullVersion());
     }
 
+    /**
+     * @return array{0: string, 1: string}[]
+     */
     public function fullVersionProvider(): array
     {
         return [
@@ -47,7 +47,7 @@ class VersionTest extends TestCase
     /**
      * @dataProvider prettyVersionProvider
      */
-    public function testGetPrettyVersion(Version $version, string $expectedVersion)
+    public function testGetPrettyVersion(Version $version, string $expectedVersion): void
     {
         $this->assertSame($expectedVersion, $version->getPrettyVersion());
     }
@@ -55,11 +55,14 @@ class VersionTest extends TestCase
     /**
      * @dataProvider prettyVersionProvider
      */
-    public function testToString(Version $version, string $expectedVersion)
+    public function testToString(Version $version, string $expectedVersion): void
     {
         $this->assertSame($expectedVersion, (string) $version);
     }
 
+    /**
+     * @return array{0: Version, 1: string}[]
+     */
     public function prettyVersionProvider(): array
     {
         return [
@@ -71,14 +74,17 @@ class VersionTest extends TestCase
     }
 
     /**
-     * @dataProvider versionWithShortCommitProvider
+     * @dataProvider versionWithShortReferenceProvider
      */
-    public function testGetVersionWithShortCommit(Version $version, string $expectedVersion)
+    public function testGetVersionWithShortReference(Version $version, string $expectedVersion): void
     {
         $this->assertSame($expectedVersion, $version->getVersionWithShortReference());
     }
 
-    public function versionWithShortCommitProvider(): array
+    /**
+     * @return array{0: Version, 1: string}[]
+     */
+    public function versionWithShortReferenceProvider(): array
     {
         return [
             [$this->createVersion(self::STABLE_VERSION), '1.1.2@51e867c'],
@@ -91,11 +97,14 @@ class VersionTest extends TestCase
     /**
      * @dataProvider shortVersionProvider
      */
-    public function testGetShortVersion(Version $version, string $expectedVersion)
+    public function testGetShortVersion(Version $version, string $expectedVersion): void
     {
         $this->assertSame($expectedVersion, $version->getShortVersion());
     }
 
+    /**
+     * @return array{0: Version, 1: string}[]
+     */
     public function shortVersionProvider(): array
     {
         return [
@@ -107,14 +116,17 @@ class VersionTest extends TestCase
     }
 
     /**
-     * @dataProvider commitHashProvider
+     * @dataProvider referenceHashProvider
      */
-    public function testGetReference(Version $version, string $expectedReference)
+    public function testGetReference(Version $version, string $expectedReference): void
     {
         $this->assertSame($expectedReference, $version->getReference());
     }
 
-    public function commitHashProvider(): array
+    /**
+     * @return array{0: Version, 1: string}[]
+     */
+    public function referenceHashProvider(): array
     {
         return [
             [$this->createVersion(self::STABLE_VERSION), '51e867c70f0799790b3e82276875414ce13daaca'],
@@ -125,14 +137,17 @@ class VersionTest extends TestCase
     }
 
     /**
-     * @dataProvider shortCommitHashProvider
+     * @dataProvider shortReferenceHashProvider
      */
-    public function testGetShortReference(Version $version, string $expectedHash)
+    public function testGetShortReference(Version $version, string $expectedHash): void
     {
         $this->assertSame($expectedHash, $version->getShortReference());
     }
 
-    public function shortCommitHashProvider(): array
+    /**
+     * @return array{0: Version, 1: string}[]
+     */
+    public function shortReferenceHashProvider(): array
     {
         return [
             [$this->createVersion(self::STABLE_VERSION), '51e867c'],

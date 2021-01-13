@@ -60,3 +60,18 @@ jobs:
           coverage: none
       - run: composer install --no-progress --ansi
       - run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run
+  PHPStan:
+    runs-on: ubuntu-latest
+    name: PHPStan
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: '7.4'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+      - run: composer install --no-progress --ansi
+      - run: vendor/bin/phpstan analyse

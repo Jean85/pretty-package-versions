@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class PrettyVersionsTest extends TestCase
 {
-    public function testVersion()
+    public function testVersion(): void
     {
         $version = PrettyVersions::getVersion('phpunit/phpunit');
 
@@ -21,19 +21,19 @@ class PrettyVersionsTest extends TestCase
         $this->assertSame($expectedFullVersion, $version->getFullVersion());
     }
 
-    public function testVersionLetsExceptionRaise()
+    public function testVersionLetsExceptionRaise(): void
     {
         $this->expectException(\Throwable::class);
 
         PrettyVersions::getVersion('non-existent-vendor/non-existent-package');
     }
 
-    public function testGetRootPackageName()
+    public function testGetRootPackageName(): void
     {
         $this->assertSame('jean85/pretty-package-versions', PrettyVersions::getRootPackageName());
     }
 
-    public function testGetRootPackageVersion()
+    public function testGetRootPackageVersion(): void
     {
         $version = PrettyVersions::getRootPackageVersion();
 
