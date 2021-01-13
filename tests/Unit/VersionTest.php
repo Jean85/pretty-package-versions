@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Unit;
 
 use Jean85\Version;
@@ -8,8 +10,11 @@ use PHPUnit\Framework\TestCase;
 class VersionTest extends TestCase
 {
     const STABLE_VERSION = ['1.1.2', '51e867c70f0799790b3e82276875414ce13daaca'];
-    const STABLE_VERSION_WITH_V =  ['v1.7.0', '93d39f1f7f9326d746203c7c056f300f7f126073'];
+
+    const STABLE_VERSION_WITH_V = ['v1.7.0', '93d39f1f7f9326d746203c7c056f300f7f126073'];
+
     const DEV_VERSION = ['9999999-dev', 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'];
+
     const REPLACE_VERSION = ['self.version', 'aaabbbcccddd'];
 
     public function testGetPackageName()
@@ -52,7 +57,7 @@ class VersionTest extends TestCase
      */
     public function testToString(Version $version, string $expectedVersion)
     {
-        $this->assertSame($expectedVersion, (string)$version);
+        $this->assertSame($expectedVersion, (string) $version);
     }
 
     public function prettyVersionProvider(): array

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Jean85;
 
 use Composer\InstalledVersions;
@@ -12,8 +14,8 @@ class PrettyVersions
     {
         return new Version(
             $packageName,
-            InstalledVersions::getPrettyVersion($packageName), 
-            InstalledVersions::getReference($packageName) 
+            InstalledVersions::getPrettyVersion($packageName),
+            InstalledVersions::getReference($packageName)
         );
     }
 

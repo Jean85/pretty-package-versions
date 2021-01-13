@@ -7,6 +7,7 @@
         "composer-runtime-api": "^2.0.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.17",
         "phpunit/phpunit": "^7.5|^8.5|^9.4"
     },
     "license": "MIT",
@@ -25,6 +26,9 @@
         "composer",
         "release"
     ],
+    "config": {
+        "sort-packages": true
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.x-dev"
