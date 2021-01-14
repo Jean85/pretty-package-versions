@@ -11,13 +11,12 @@ This release is aimed to become a bridge for native Composer 2 support. The BC b
 ### Changed
  * Use Composer 2 API directly to retrieve versions
  * `Version` methods deprecated; this is a simple rename (`commit` to `reference`), to better reflect the meaning of Composer API data; the old methods are preserved but deprecated to reduce breaking changes:
---------------------------------------------------------------------------------------
+
 | New method                                | Old, deprecated method                 |
---------------------------------------------------------------------------------------
+|-------------------------------------------|----------------------------------------|
 | `Version::getReference()`                 | `Version::getCommitHash()`             | 
 | `Version::getShortReference()`            | `Version::getShortCommitHash()`        | 
 | `Version::getVersionWithShortReference()` | `Version::getVersionWithShortCommit()` |
---------------------------------------------------------------------------------------
 
 ### Removed
  * Drop PHP 7.0 support
