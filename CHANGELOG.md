@@ -3,6 +3,30 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.0] - 2021-01-??
+This release is aimed to become a bridge for native Composer 2 support. The BC breaks are minimal; if you're using it in a library, you're encouraged to require it  with `^1.5 || ^2.0`, so that your end users will not be constrained to use a specific Composer version. 
+
+### Added
+ * `Version` methods added: `getReference`, `getShortReference`, `getVersionWithShortReference` (see table below)
+### Changed
+ * Use Composer 2 API directly to retrieve versions
+ * `Version` methods deprecated; this is a simple rename (`commit` to `reference`), to better reflect the meaning of Composer API data; the old methods are preserved but deprecated to reduce breaking changes:
+--------------------------------------------------------------------------------------
+| New method                                | Old, deprecated method                 |
+--------------------------------------------------------------------------------------
+| `Version::getReference()`                 | `Version::getCommitHash()`             | 
+| `Version::getShortReference()`            | `Version::getShortCommitHash()`        | 
+| `Version::getVersionWithShortReference()` | `Version::getVersionWithShortCommit()` |
+--------------------------------------------------------------------------------------
+
+### Removed
+ * Drop PHP 7.0 support
+ * Drop Composer 1 support
+ * Drop dependencies
+ * [BC BREAK] Constant `PrettyVersions::SHORT_COMMIT_LENGTH` removed
+ * [BC BREAK] Constant `Version::SHORT_COMMIT_LENGTH` made private
+ * [BC BREAK] `Version` constructor changed arguments: second argument `string $version` has been split into `string $prettyVersion, string $reference`
+
 ## [1.5.1] - 2020-09-14
 ### Added
  * PHP 8 support (#28)
