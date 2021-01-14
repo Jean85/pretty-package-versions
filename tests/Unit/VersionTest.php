@@ -82,6 +82,16 @@ class VersionTest extends TestCase
     }
 
     /**
+     * @dataProvider versionWithShortReferenceProvider
+     */
+    public function testDeprecatedGetters(Version $version): void
+    {
+        $this->assertSame($version->getReference(), $version->getCommitHash());
+        $this->assertSame($version->getShortReference(), $version->getShortCommitHash());
+        $this->assertSame($version->getVersionWithShortReference(), $version->getVersionWithShortCommit());
+    }
+
+    /**
      * @return array{0: Version, 1: string}[]
      */
     public function versionWithShortReferenceProvider(): array

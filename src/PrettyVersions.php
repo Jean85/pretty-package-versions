@@ -8,8 +8,6 @@ use Composer\InstalledVersions;
 
 class PrettyVersions
 {
-    const SHORT_COMMIT_LENGTH = 7;
-
     public static function getVersion(string $packageName): Version
     {
         return new Version(

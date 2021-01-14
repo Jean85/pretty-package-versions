@@ -6,7 +6,7 @@ namespace Jean85;
 
 class Version
 {
-    const SHORT_COMMIT_LENGTH = PrettyVersions::SHORT_COMMIT_LENGTH;
+    private const SHORT_COMMIT_LENGTH = 7;
 
     /** @var string */
     private $packageName;
@@ -42,6 +42,14 @@ class Version
         return $this->prettyVersion . '@' . $this->getReference();
     }
 
+    /**
+     * @deprecated
+     */
+    public function getVersionWithShortCommit(): string
+    {
+        return $this->getVersionWithShortReference();
+    }
+
     public function getVersionWithShortReference(): string
     {
         return $this->prettyVersion . '@' . $this->getShortReference();
@@ -57,9 +65,25 @@ class Version
         return $this->prettyVersion;
     }
 
+    /**
+     * @deprecated
+     */
+    public function getCommitHash(): string
+    {
+        return $this->getReference();
+    }
+
     public function getReference(): string
     {
         return $this->reference;
+    }
+
+    /**
+     * @deprecated
+     */
+    public function getShortCommitHash(): string
+    {
+        return $this->getShortReference();
     }
 
     public function getShortReference(): string
