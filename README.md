@@ -10,7 +10,7 @@
 A small, independent wrapper to get pretty versions strings of your dependencies.
 
 ## Installation
-* If you use this package in a library, you're encourage to require it with a constraint of `^1.5 || ^2.0`, to obtain all the functionalities without constraining your end users to upgrade immediately to Composer 2.
+* If you use this package in a library, you're encouraged to require it with a constraint of `^1.5 || ^2.0`, to obtain all the functionalities without constraining your end users to upgrade immediately to Composer 2.
 
 To install, use Composer:
 
