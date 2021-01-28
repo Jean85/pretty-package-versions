@@ -26,4 +26,11 @@ class PrettyVersionsTest extends TestCase
 
         PrettyVersions::getVersion('psr/log-implementation');
     }
+
+    public function testGetVersionOfMissingPackage(): void
+    {
+        $this->expectException(\OutOfBoundsException::class);
+
+        PrettyVersions::getVersion('foo/bar');
+    }
 }
