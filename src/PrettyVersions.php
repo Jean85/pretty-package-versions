@@ -12,7 +12,7 @@ use Jean85\Exception\VersionMissingExceptionInterface;
 class PrettyVersions
 {
     /**
-     * @throws VersionMissingExceptionInterface
+     * @throws VersionMissingExceptionInterface When a package is provided ({@see ProvidedPackageException}) or replaced ({@see ReplacedPackageException})
      */
     public static function getVersion(string $packageName): Version
     {
