@@ -10,10 +10,15 @@ class PrettyVersions
 {
     public static function getVersion(string $packageName): Version
     {
+        $version = InstalledVersions::getPrettyVersion($packageName);
+        if ($version === null) {
+            $version = explode(' || ', InstalledVersions::getVersionRanges($packageName))[0] ?? '';
+        }
+
         return new Version(
             $packageName,
-            InstalledVersions::getPrettyVersion($packageName),
-            InstalledVersions::getReference($packageName)
+            $version,
+            (string) InstalledVersions::getReference($packageName)
         );
     }
 
