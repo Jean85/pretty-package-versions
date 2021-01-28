@@ -6,6 +6,7 @@ namespace Jean85;
 
 use Composer\InstalledVersions;
 use Jean85\Exception\ProvidedPackageException;
+use Jean85\Exception\ReplacedPackageException;
 use Jean85\Exception\VersionMissingExceptionInterface;
 
 class PrettyVersions
@@ -17,6 +18,10 @@ class PrettyVersions
     {
         if (isset(InstalledVersions::getRawData()['versions'][$packageName]['provided'])) {
             throw ProvidedPackageException::create($packageName);
+        }
+
+        if (isset(InstalledVersions::getRawData()['versions'][$packageName]['replaced'])) {
+            throw ReplacedPackageException::create($packageName);
         }
 
         return new Version(
