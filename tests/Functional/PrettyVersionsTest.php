@@ -33,11 +33,12 @@ class PrettyVersionsTest extends TestCase
         $this->assertSame('jean85/pretty-package-versions', PrettyVersions::getRootPackageName());
     }
 
-    public function testGetReplacedPackageVersion()
+    public function testGetReplacedPackageVersion(): void
     {
         $version = PrettyVersions::getVersion('ocramius/package-versions');
         $this->assertSame('ocramius/package-versions', $version->getPackageName());
         $this->assertNotEmpty($version->getPrettyVersion());
+        $this->assertSame($version->getPrettyVersion() . '@unknown', $version->getFullVersion());
     }
 
     public function testGetRootPackageVersion(): void

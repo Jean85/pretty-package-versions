@@ -12,13 +12,13 @@ class PrettyVersions
     {
         $version = InstalledVersions::getPrettyVersion($packageName);
         if ($version === null) {
-            $version = explode(' || ', InstalledVersions::getVersionRanges($packageName))[0] ?? '';
+            $version = explode(' || ', InstalledVersions::getVersionRanges($packageName))[0] ?? 'unknown';
         }
 
         return new Version(
             $packageName,
             $version,
-            (string) InstalledVersions::getReference($packageName)
+            InstalledVersions::getReference($packageName) ?? 'unknown'
         );
     }
 
