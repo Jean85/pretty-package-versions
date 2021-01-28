@@ -3,6 +3,15 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.1] - 2021-01-28
+This small patch handles replaced and provided packages, so that consumers of this library can handle bad requests gracefully.
+
+### Added
+ * Add `VersionMissingExceptionInterface`, and two exceptions implementing it: `ProvidedPackageException` and `ReplacedPackageException` 
+### Fixed
+ * Throw explicit `ProvidedPackageException` when asking for the version of a package which is provided (was `\TypeError` before)
+ * Throw explicit `ReplacedPackageException` when asking for the version of a package which is replaced (was `\TypeError` before)
+
 ## [2.0.0] - 2021-01-14
 This release is aimed to become a bridge for native Composer 2 support. The BC breaks are minimal; if you're using it in a library, you're encouraged to require it  with `^1.5 || ^2.0`, so that your end users will not be constrained to use a specific Composer version. 
 
