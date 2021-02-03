@@ -167,6 +167,20 @@ class VersionTest extends TestCase
         ];
     }
 
+    public function testCreateWithNullReference(): void
+    {
+        $version = new Version('test/package', '1.0.0', null);
+
+        $this->assertSame('{no reference}', $version->getReference());
+    }
+
+    public function testCreateWithNoReference(): void
+    {
+        $version = new Version('test/package', '1.0.0');
+
+        $this->assertSame('{no reference}', $version->getReference());
+    }
+
     /**
      * @param string[] $fixture
      */
