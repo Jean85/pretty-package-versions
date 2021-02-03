@@ -14,13 +14,13 @@ class Version
     /** @var string */
     private $prettyVersion;
 
-    /** @var string */
+    /** @var ?string */
     private $reference;
 
     /** @var bool */
     private $versionIsTagged;
 
-    public function __construct(string $packageName, string $prettyVersion, string $reference)
+    public function __construct(string $packageName, string $prettyVersion, ?string $reference)
     {
         $this->packageName = $packageName;
         $this->prettyVersion = $prettyVersion;
@@ -68,12 +68,12 @@ class Version
     /**
      * @deprecated
      */
-    public function getCommitHash(): string
+    public function getCommitHash(): ?string
     {
         return $this->getReference();
     }
 
-    public function getReference(): string
+    public function getReference(): ?string
     {
         return $this->reference;
     }
@@ -81,13 +81,17 @@ class Version
     /**
      * @deprecated
      */
-    public function getShortCommitHash(): string
+    public function getShortCommitHash(): ?string
     {
         return $this->getShortReference();
     }
 
-    public function getShortReference(): string
+    public function getShortReference(): ?string
     {
+        if (null === $this->reference) {
+            return null;
+        }
+
         return substr($this->reference, 0, self::SHORT_COMMIT_LENGTH);
     }
 
