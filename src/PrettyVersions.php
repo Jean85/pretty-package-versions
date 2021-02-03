@@ -38,6 +38,10 @@ class PrettyVersions
 
     public static function getRootPackageVersion(): Version
     {
-        return self::getVersion(self::getRootPackageName());
+        return new Version(
+            self::getRootPackageName(),
+            InstalledVersions::getRootPackage()['pretty_version'],
+            InstalledVersions::getRootPackage()['reference']
+        );
     }
 }
