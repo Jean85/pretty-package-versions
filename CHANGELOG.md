@@ -3,8 +3,11 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [2.0.2] - 2021-01-28
+## [2.0.2] - 2021-02-03
+### Changed
  * Retrieve root package information without indirection (a1cfeec)
+### Fixed
+ * Handle `null` as reference when constructing `Version` (#36)
 
 ## [2.0.1] - 2021-01-28
 This small patch handles replaced and provided packages, so that consumers of this library can handle bad requests gracefully.
