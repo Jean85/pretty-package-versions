@@ -41,6 +41,10 @@ This release is aimed to become a bridge for native Composer 2 support. The BC b
  * [BC BREAK] Constant `Version::SHORT_COMMIT_LENGTH` made private
  * [BC BREAK] `Version` constructor changed arguments: second argument `string $version` has been split into `string $prettyVersion, string $reference`
 
+## [1.6.0] - 2021-02-04
+### Added
+ * Add forward compatibility layer for newer methods in 2.0 (see the [2.0 changelog](https://github.com/Jean85/pretty-package-versions/blob/2.x/CHANGELOG.md#200---2021-01-14))
+
 ## [1.5.1] - 2020-09-14
 ### Added
  * PHP 8 support (#28)
