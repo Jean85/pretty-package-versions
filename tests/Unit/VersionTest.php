@@ -77,6 +77,7 @@ class VersionTest extends TestCase
         $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedVersion, $version->getVersionWithShortCommit());
+        $this->assertSame($version->getVersionWithShortCommit(), $version->getVersionWithShortReference(), 'FC layer is failing');
     }
 
     public function versionWithShortCommitProvider(): array
@@ -117,6 +118,7 @@ class VersionTest extends TestCase
         $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedHash, $version->getCommitHash());
+        $this->assertSame($version->getCommitHash(), $version->getReference(), 'FC layer is failing');
     }
 
     public function commitHashProvider(): array
@@ -137,6 +139,7 @@ class VersionTest extends TestCase
         $version = new Version('vendor/package', $originalVersion);
 
         $this->assertSame($expectedHash, $version->getShortCommitHash());
+        $this->assertSame($version->getShortCommitHash(), $version->getShortReference(), 'FC layer is failing');
     }
 
     public function shortCommitHashProvider(): array
