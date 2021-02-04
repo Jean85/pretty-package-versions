@@ -4,7 +4,7 @@ on:
   pull_request: null
   push:
     branches:
-      - master
+      - 1.x
 
 jobs:
   tests:
@@ -23,13 +23,16 @@ jobs:
     steps:
       # checkout git
       - uses: actions/checkout@v2
-
+      # cache
+      - uses: actions/cache@v2
+        with:
+          path: ~/.composer/cache/files
+          key: ${{ matrix.php }}
       # setup PHP
-      - uses: shivammathur/setup-php@v1
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           coverage: xdebug
-
       - run: composer install --no-progress --ansi
         if: matrix.php != '8.0'
       - run: composer install --no-progress --ansi --ignore-platform-reqs
