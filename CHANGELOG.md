@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [1.6.0] - 2021-02-04
+### Added
+ * Add forward compatibility layer for newer methods in 2.0 (see the [2.0 changelog](https://github.com/Jean85/pretty-package-versions/blob/2.x/CHANGELOG.md#200---2021-01-14))
+
 ## [1.5.1] - 2020-09-14
 ### Added
  * PHP 8 support (#28)
