@@ -20,7 +20,7 @@ class Version
     /** @var bool */
     private $versionIsTagged;
 
-    const NO_REFERENCE_TEXT = '{no reference}';
+    public const NO_REFERENCE_TEXT = '{no reference}';
 
     public function __construct(string $packageName, string $prettyVersion, ?string $reference = null)
     {
