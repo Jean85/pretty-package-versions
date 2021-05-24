@@ -47,6 +47,8 @@ class PrettyVersions
             if (isset(InstalledVersions::getRawData()['versions'][$packageName]['provided'])) {
                 throw ProvidedPackageException::create($packageName);
             }
+
+            return;
         }
 
         foreach (InstalledVersions::getAllRawData() as $installed) {
@@ -62,6 +64,8 @@ class PrettyVersions
             if (isset(InstalledVersions::getRawData()['versions'][$packageName]['replaced'])) {
                 throw ReplacedPackageException::create($packageName);
             }
+
+            return;
         }
 
         foreach (InstalledVersions::getAllRawData() as $installed) {
