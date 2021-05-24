@@ -43,6 +43,12 @@ class PrettyVersions
 
     protected static function checkProvidedPackages(string $packageName): void
     {
+        if (! method_exists(InstalledVersions::class, 'getAllRawData')) {
+            if (isset(InstalledVersions::getRawData()['versions'][$packageName]['provided'])) {
+                throw ProvidedPackageException::create($packageName);
+            }
+        }
+
         foreach (InstalledVersions::getAllRawData() as $installed) {
             if (isset($installed['versions'][$packageName]['provided'])) {
                 throw ProvidedPackageException::create($packageName);
@@ -52,6 +58,12 @@ class PrettyVersions
 
     protected static function checkReplacedPackages(string $packageName): void
     {
+        if (! method_exists(InstalledVersions::class, 'getAllRawData')) {
+            if (isset(InstalledVersions::getRawData()['versions'][$packageName]['replaced'])) {
+                throw ReplacedPackageException::create($packageName);
+            }
+        }
+
         foreach (InstalledVersions::getAllRawData() as $installed) {
             if (isset($installed['versions'][$packageName]['replaced'])) {
                 throw ReplacedPackageException::create($packageName);
