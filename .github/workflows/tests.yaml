@@ -32,6 +32,12 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: xdebug
+      # PHP8.0 will use the latest composer version
+      - run: composer self-update
+        if: matrix.php == '8.0'
+      # All other version will be locked to an outdated composer version
+      - run: composer self-update --rollback 2.0.13
+        if: matrix.php != '8.0'
       - run: composer install --no-progress --ansi
         if: matrix.php != '8.0'
       - run: composer install --no-progress --ansi --ignore-platform-reqs
