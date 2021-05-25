@@ -17,37 +17,28 @@ jobs:
           - '7.3'
           - '7.4'
           - '8.0'
+        composer_version: ['v2']
+        include:
+          - description: '(prefer lowest)'
+            php: '7.1'
+            composer_version: '2.0.0'
+            dependencies: 'lowest'
 
-    name: PHP ${{ matrix.php }} tests
+    name: PHP ${{ matrix.php }} tests ${{ matrix.description }}
     steps:
       # checkout git
       - uses: actions/checkout@v2
-      # cache
-      - uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: ${{ matrix.php }}
       # setup PHP
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+          tools: composer:${{ matrix.composer_version }}
           coverage: xdebug
-      # PHP8.0 will use the latest composer version
-      - run: composer self-update --no-progress --ansi
-        if: matrix.php == '8.0'
-      # All other version will be locked to an outdated composer version
-      - run: curl --silent --show-error https://getcomposer.org/installer -o composer-setup.php && php composer-setup.php --version=2.0.13 && mv composer.phar /usr/bin/composer && chmod -x /usr/bin/composer
-        if: matrix.php != '8.0'
-      - run: composer install --no-progress --ansi
-        if: matrix.php != '8.0'
-      - run: composer install --no-progress --ansi --ignore-platform-reqs
-        if: matrix.php == '8.0'
+      - uses: "ramsey/composer-install@v1"
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
-        if: matrix.php != '8.0'
-      - run: vendor/bin/phpunit
-        if: matrix.php == '8.0'
       - uses: codecov/codecov-action@v1
-        if: matrix.php != '8.0'
         with:
           file: './coverage.xml'
           fail_ci_if_error: true
@@ -56,41 +47,29 @@ jobs:
     name: Code style
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: '7.4'
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
           coverage: none
-      - run: composer install --no-progress --ansi
+      - uses: "ramsey/composer-install@v1"
       - run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run
   PHPStan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: '7.4'
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
           coverage: none
-      - run: composer install --no-progress --ansi
+      - uses: "ramsey/composer-install@v1"
       - run: vendor/bin/phpstan analyse
   Psalm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v2
-        with:
-          path: ~/.composer/cache/files
-          key: '7.4'
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
           coverage: none
-      - run: composer install --no-progress --ansi
+      - uses: "ramsey/composer-install@v1"
       - run: vendor/bin/psalm
