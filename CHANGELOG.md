@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.4] - 2021-05-26
+### Fixed
+ * Handle deprecation of `InstalledVersions::getRawData()` from Composer 2.0.14 (#39, thanks @BramRoets)
+
 ## [2.0.3] - 2021-02-22
 ### Added
  * Added the `Version::NO_REFERENCE_TEXT` constant to retrieve the string used when no reference is availabled (#38, thanks @DeyV)
