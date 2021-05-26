@@ -1,5 +1,5 @@
-#includes:
-#    - phpstan-baseline.neon
+includes:
+    - phpstan-baseline.neon
 
 parameters:
     level: 8

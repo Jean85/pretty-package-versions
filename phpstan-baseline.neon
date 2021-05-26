@@ -1,0 +1,7 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined static method Composer\\\\InstalledVersions\\:\\:getAllRawData\\(\\)\\.$#"
+			count: 2
+			path: src/PrettyVersions.php
+
