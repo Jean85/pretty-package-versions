@@ -3,13 +3,20 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.5] - 2021-10-08
+### Added
+* PHP 8.1 support verified
+* Added the `Version::NO_VERSION_TEXT` constant to retrieve the string used when no version is available (#41)
+### Fixed
+* Handle with `Version::NO_VERSION_TEXT` constant when no version is available due to replaced package (#41)
+
 ## [2.0.4] - 2021-05-26
 ### Fixed
  * Handle deprecation of `InstalledVersions::getRawData()` from Composer 2.0.14 (#39, thanks @BramRoets)
 
 ## [2.0.3] - 2021-02-22
 ### Added
- * Added the `Version::NO_REFERENCE_TEXT` constant to retrieve the string used when no reference is availabled (#38, thanks @DeyV)
+ * Added the `Version::NO_REFERENCE_TEXT` constant to retrieve the string used when no reference is available (#38, thanks @DeyV)
 
 ## [2.0.2] - 2021-02-03
 ### Changed

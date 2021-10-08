@@ -20,12 +20,13 @@ class Version
     /** @var bool */
     private $versionIsTagged;
 
+    public const NO_VERSION_TEXT = '{no version}';
     public const NO_REFERENCE_TEXT = '{no reference}';
 
-    public function __construct(string $packageName, string $prettyVersion, ?string $reference = null)
+    public function __construct(string $packageName, ?string $prettyVersion = null, ?string $reference = null)
     {
         $this->packageName = $packageName;
-        $this->prettyVersion = $prettyVersion;
+        $this->prettyVersion = $prettyVersion ?? self::NO_VERSION_TEXT;
         $this->reference = $reference ?? self::NO_REFERENCE_TEXT;
         $this->versionIsTagged = preg_match('/[^v\d.]/', $this->getShortVersion()) === 0;
     }
