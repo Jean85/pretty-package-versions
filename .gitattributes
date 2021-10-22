@@ -4,7 +4,10 @@
 .gitignore export-ignore
 .php-cs-fixer.dist.php export-ignore
 CHANGELOG.md export-ignore
-composer.lock export-ignore
+codecov.yml export-ignore
+Makefile export-ignore
+phpstan.neon export-ignore
 phpunit.xml.dist export-ignore
+psalm.xml export-ignore
 README.md export-ignore
 tests/ export-ignore

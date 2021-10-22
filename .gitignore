@@ -1,4 +1,5 @@
 .php-cs-fixer.php
 composer.lock
+phpunit.xml
 vendor
 *.cache
