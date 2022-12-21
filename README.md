@@ -6,7 +6,7 @@
 [![Stable release][Last stable image]][Packagist link]
 [![Total Downloads](https://poser.pugx.org/jean85/pretty-package-versions/downloads)](//packagist.org/packages/jean85/pretty-package-versions)
 
-[![Build status](https://img.shields.io/github/workflow/status/Jean85/pretty-package-versions/Tests)](https://github.com/Jean85/pretty-package-versions/actions)
+[![Build status](https://img.shields.io/github/actions/workflow/status/Jean85/pretty-package-versions/tests.yaml?branch=2.x)](https://github.com/Jean85/pretty-package-versions/actions)
 [![Codecov](https://codecov.io/gh/Jean85/pretty-package-versions/branch/master/graph/badge.svg)](https://codecov.io/gh/Jean85/pretty-package-versions)
 
 A small, independent wrapper to get pretty versions strings of your dependencies.
