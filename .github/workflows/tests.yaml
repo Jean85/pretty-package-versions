@@ -19,6 +19,7 @@ jobs:
           - '8.0'
           - '8.1'
           - '8.2'
+          - '8.3'
         composer_version: ['v2']
         include:
           - description: '(prefer lowest)'
