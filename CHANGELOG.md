@@ -3,6 +3,11 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.0.6] - 2024-03-08
+### Added
+* PHP 8.2 and 8.3 support verified
+* Optimized package distribution via .gitattributes (#44 #46, thanks @villfa @VincentLanglet)
+
 ## [2.0.5] - 2021-10-08
 ### Added
 * PHP 8.1 support verified
