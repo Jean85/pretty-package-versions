@@ -32,7 +32,7 @@ jobs:
     name: PHP ${{ matrix.php }} tests ${{ matrix.description }}
     steps:
       # checkout git
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       # setup PHP
       - uses: shivammathur/setup-php@v2
         with:
@@ -52,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Code style
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
@@ -62,7 +62,7 @@ jobs:
   PHPStan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
@@ -72,7 +72,7 @@ jobs:
   Psalm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
