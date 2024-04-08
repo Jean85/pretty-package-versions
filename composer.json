@@ -11,7 +11,7 @@
         "jean85/composer-provided-replaced-stub-package": "^1.0",
         "phpstan/phpstan": "^1.4",
         "phpunit/phpunit": "^7.5|^8.5|^9.4",
-        "vimeo/psalm": "^4.3"
+        "vimeo/psalm": "^4.3 || ^5.0"
     },
     "license": "MIT",
     "authors": [
