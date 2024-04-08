@@ -39,7 +39,7 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: composer:${{ matrix.composer_version }}
           coverage: xdebug
-      - uses: "ramsey/composer-install@v1"
+      - uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: ${{ matrix.dependencies }}
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
@@ -57,7 +57,7 @@ jobs:
         with:
           php-version: '7.4'
           coverage: none
-      - uses: "ramsey/composer-install@v1"
+      - uses: "ramsey/composer-install@v3"
       - run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run
   PHPStan:
     runs-on: ubuntu-latest
@@ -67,7 +67,7 @@ jobs:
         with:
           php-version: '7.4'
           coverage: none
-      - uses: "ramsey/composer-install@v1"
+      - uses: "ramsey/composer-install@v3"
       - run: vendor/bin/phpstan analyse
   Psalm:
     runs-on: ubuntu-latest
@@ -77,5 +77,5 @@ jobs:
         with:
           php-version: '7.4'
           coverage: none
-      - uses: "ramsey/composer-install@v1"
+      - uses: "ramsey/composer-install@v3"
       - run: vendor/bin/psalm
