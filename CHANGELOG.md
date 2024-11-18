@@ -3,6 +3,13 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.1.0] - 2024-11-18
+### Added
+* Add CI tests for PHP 8.4
+### Changed
+* Bump minimum PHP version to 7.4
+* Bump minimum Composer version to 2.1.0
+
 ## [2.0.6] - 2024-03-08
 ### Added
 * PHP 8.2 and 8.3 support verified
