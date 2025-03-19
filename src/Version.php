@@ -87,6 +87,10 @@ class Version
 
     public function getShortReference(): string
     {
+        if ($this->reference === self::NO_REFERENCE_TEXT) {
+            return self::NO_REFERENCE_TEXT;
+        }
+
         return substr($this->reference, 0, self::SHORT_COMMIT_LENGTH);
     }
 

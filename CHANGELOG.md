@@ -6,6 +6,7 @@ All notable changes of the `jean85/pretty-package-versions` package are document
 ## [2.1.1] - 2025-03-19
 ### Fixed
 * Improve detection of tagged version (handles edge cases like RC1, alpha-2, etc.)
+* Do not truncate `{no reference}` in short reference when no reference is found
 
 ## [2.1.0] - 2024-11-18
 ### Added

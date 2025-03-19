@@ -160,6 +160,13 @@ class VersionTest extends TestCase
         $this->assertSame($expectedHash, $version->getShortReference());
     }
 
+    public function testGetShortReferenceShouldNotTruncateMissingReference(): void
+    {
+        $version = new Version('test/package', '1.0.0');
+
+        $this->assertSame('{no reference}', $version->getShortReference());
+    }
+
     /**
      * @return array{0: Version, 1: string}[]
      */
