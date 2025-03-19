@@ -3,7 +3,7 @@
 $config = new PhpCsFixer\Config('default');
 $config->setRiskyAllowed(true);
 $config->setRules([
-    '@PSR2' => true,
+    '@PER-CS2.0' => true,
     'align_multiline_comment' => true,
     'array_indentation' => true,
     'array_syntax' => [
@@ -96,7 +96,6 @@ $config->setRules([
     'psr_autoloading' => true,
     'return_type_declaration' => true,
     'short_scalar_cast' => true,
-    'single_blank_line_before_namespace' => true,
     'single_class_element_per_statement' => true,
     'single_quote' => true,
     'space_after_semicolon' => true,

@@ -8,17 +8,13 @@ class Version
 {
     private const SHORT_COMMIT_LENGTH = 7;
 
-    /** @var string */
-    private $packageName;
+    private string $packageName;
 
-    /** @var string */
-    private $prettyVersion;
+    private string $prettyVersion;
 
-    /** @var string */
-    private $reference;
+    private string $reference;
 
-    /** @var bool */
-    private $versionIsTagged;
+    private bool $versionIsTagged;
 
     public const NO_VERSION_TEXT = '{no version}';
     public const NO_REFERENCE_TEXT = '{no reference}';

@@ -9,8 +9,9 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.2",
         "jean85/composer-provided-replaced-stub-package": "^1.0",
-        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^7.5|^8.5|^9.6",
+        "rector/rector": "^2.0",
         "vimeo/psalm": "^4.3 || ^5.0"
     },
     "license": "MIT",
