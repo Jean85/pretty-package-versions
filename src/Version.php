@@ -24,7 +24,7 @@ class Version
         $this->packageName = $packageName;
         $this->prettyVersion = $prettyVersion ?? self::NO_VERSION_TEXT;
         $this->reference = $reference ?? self::NO_REFERENCE_TEXT;
-        $this->versionIsTagged = preg_match('/[^v\d.]/', $this->getShortVersion()) === 0;
+        $this->versionIsTagged = preg_match('/^v?(\d+\.)+\d+(-(beta|RC|alpha).?\d+)?/i', $this->getShortVersion()) === 1;
     }
 
     public function getPrettyVersion(): string

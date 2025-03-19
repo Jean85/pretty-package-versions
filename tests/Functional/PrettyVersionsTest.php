@@ -40,4 +40,9 @@ class PrettyVersionsTest extends TestCase
         $this->assertSame('jean85/pretty-package-versions', $version->getPackageName());
         $this->assertEquals(PrettyVersions::getVersion('jean85/pretty-package-versions'), $version);
     }
+
+    public function testRegression(): void
+    {
+        $this->assertSame('7.0.0-RC1', PrettyVersions::getRootPackageVersion()->getPrettyVersion());
+    }
 }

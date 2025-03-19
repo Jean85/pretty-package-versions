@@ -2,6 +2,7 @@
     "name": "jean85/pretty-package-versions",
     "description": "A library to get pretty versions strings of installed dependencies",
     "type": "library",
+    "version": "7.0.0-RC1",
     "require": {
         "php": "^7.4|^8.0",
         "composer-runtime-api": "^2.1.0"
