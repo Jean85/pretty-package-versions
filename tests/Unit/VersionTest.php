@@ -207,6 +207,7 @@ class VersionTest extends TestCase
             ['7.0.0-alpha.1'],
             ['7.0.0-alpha1'],
             ['7.0.0-ALPHA1'],
+            ['7.0.0-beta1'],
             ['7.0.0-RC1'],
             ['7.0.0-rc1'],
             ['1.1.2'],
