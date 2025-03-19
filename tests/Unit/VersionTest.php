@@ -12,6 +12,7 @@ class VersionTest extends TestCase
     private const STABLE_VERSION = ['1.1.2', '51e867c70f0799790b3e82276875414ce13daaca'];
     private const STABLE_VERSION_WITH_V = ['v1.7.0', '93d39f1f7f9326d746203c7c056f300f7f126073'];
     private const DEV_VERSION = ['9999999-dev', 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'];
+    private const PRE_RELEASE_VERSION = ['7.0.0-RC1', 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'];
     private const REPLACE_VERSION = ['self.version', 'aaabbbcccddd'];
 
     public function testGetPackageName(): void
@@ -40,6 +41,7 @@ class VersionTest extends TestCase
             self::STABLE_VERSION,
             self::STABLE_VERSION_WITH_V,
             self::DEV_VERSION,
+            self::PRE_RELEASE_VERSION,
             self::REPLACE_VERSION,
         ];
     }
@@ -69,6 +71,7 @@ class VersionTest extends TestCase
             [$this->createVersion(self::STABLE_VERSION), '1.1.2'],
             [$this->createVersion(self::STABLE_VERSION_WITH_V), 'v1.7.0'],
             [$this->createVersion(self::DEV_VERSION), '9999999-dev@f6e77da'],
+            [$this->createVersion(self::PRE_RELEASE_VERSION), '7.0.0-RC1'],
             [$this->createVersion(self::REPLACE_VERSION), 'self.version@aaabbbc'],
         ];
     }
@@ -99,6 +102,7 @@ class VersionTest extends TestCase
         return [
             [$this->createVersion(self::STABLE_VERSION), '1.1.2@51e867c'],
             [$this->createVersion(self::STABLE_VERSION_WITH_V), 'v1.7.0@93d39f1'],
+            [$this->createVersion(self::PRE_RELEASE_VERSION), '7.0.0-RC1@f6e77da'],
             [$this->createVersion(self::DEV_VERSION), '9999999-dev@f6e77da'],
             [$this->createVersion(self::REPLACE_VERSION), 'self.version@aaabbbc'],
         ];
@@ -121,6 +125,7 @@ class VersionTest extends TestCase
             [$this->createVersion(self::STABLE_VERSION), '1.1.2'],
             [$this->createVersion(self::STABLE_VERSION_WITH_V), 'v1.7.0'],
             [$this->createVersion(self::DEV_VERSION), '9999999-dev'],
+            [$this->createVersion(self::PRE_RELEASE_VERSION), '7.0.0-RC1'],
             [$this->createVersion(self::REPLACE_VERSION), 'self.version'],
         ];
     }
@@ -142,6 +147,7 @@ class VersionTest extends TestCase
             [$this->createVersion(self::STABLE_VERSION), '51e867c70f0799790b3e82276875414ce13daaca'],
             [$this->createVersion(self::STABLE_VERSION_WITH_V), '93d39f1f7f9326d746203c7c056f300f7f126073'],
             [$this->createVersion(self::DEV_VERSION), 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
+            [$this->createVersion(self::PRE_RELEASE_VERSION), 'f6e77da35a8420cc1923c3ad3f13b1a191ff0311'],
             [$this->createVersion(self::REPLACE_VERSION), 'aaabbbcccddd'],
         ];
     }
@@ -179,6 +185,34 @@ class VersionTest extends TestCase
         $version = new Version('test/package', '1.0.0');
 
         $this->assertSame('{no reference}', $version->getReference());
+    }
+
+    /**
+     * @dataProvider taggedVersionProvider
+     */
+    public function testRegressionDetectTaggedVersion(string $version): void
+    {
+        $version = new Version('test/package', $version, 'abcdef');
+
+        $this->assertSame($version->getPrettyVersion(), $version->getShortVersion(), 'Version is not detected as tagged as expected');
+    }
+
+    /**
+     * @return array{string}[]
+     */
+    public function taggedVersionProvider(): array
+    {
+        return [
+            ['7.0.0-alpha-1'],
+            ['7.0.0-alpha.1'],
+            ['7.0.0-alpha1'],
+            ['7.0.0-ALPHA1'],
+            ['7.0.0-beta1'],
+            ['7.0.0-RC1'],
+            ['7.0.0-rc1'],
+            ['1.1.2'],
+            ['v1.7.0'],
+        ];
     }
 
     /**

@@ -3,6 +3,10 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [2.2.0] - TBA
+### Fixed
+* Improve detection of tagged version (handles edge cases like RC1, alpha-2, etc.)
+
 ## [2.1.0] - 2024-11-18
 ### Added
 * Add CI tests for PHP 8.4
