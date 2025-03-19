@@ -3,7 +3,7 @@
 All notable changes of the `jean85/pretty-package-versions` package are documented in this file using the 
 [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## [2.2.0] - TBA
+## [2.1.1] - 2025-03-19
 ### Fixed
 * Improve detection of tagged version (handles edge cases like RC1, alpha-2, etc.)
 
