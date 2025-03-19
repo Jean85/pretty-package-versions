@@ -46,9 +46,9 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: './coverage.xml'
           fail_ci_if_error: true
-  PHP-CS-Fixer:
+  Rector-CS:
     runs-on: ubuntu-latest
-    name: Code style
+    name: Rector & Code style
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
@@ -56,7 +56,7 @@ jobs:
           php-version: '7.4'
           coverage: none
       - uses: "ramsey/composer-install@v3"
-      - run: vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run
+      - run: vendor/bin/rector --dry-run --ansi && vendor/bin/php-cs-fixer fix --ansi --verbose --dry-run
   PHPStan:
     runs-on: ubuntu-latest
     steps:
