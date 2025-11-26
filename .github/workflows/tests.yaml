@@ -41,9 +41,7 @@ jobs:
       - uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: ${{ matrix.dependencies }}
-      # only until psalm 6 support is added for PHP 8.5
-      - run: composer remove --dev vimeo/psalm --no-update
-        if: matrix.php == '8.5'
+      - run: composer remove --dev vimeo/psalm friendsofphp/php-cs-fixer --no-update
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - uses: codecov/codecov-action@v5
         with:
