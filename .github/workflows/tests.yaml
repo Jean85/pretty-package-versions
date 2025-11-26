@@ -20,6 +20,7 @@ jobs:
           - '8.2'
           - '8.3'
           - '8.4'
+          - '8.5'
         composer_version: ['v2']
         include:
           - description: '(prefer lowest)'
@@ -40,6 +41,7 @@ jobs:
       - uses: "ramsey/composer-install@v3"
         with:
           dependency-versions: ${{ matrix.dependencies }}
+      - run: composer remove --dev vimeo/psalm friendsofphp/php-cs-fixer --no-update
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
       - uses: codecov/codecov-action@v5
         with:
