@@ -43,7 +43,7 @@ jobs:
           dependency-versions: ${{ matrix.dependencies }}
       - run: composer remove --dev vimeo/psalm friendsofphp/php-cs-fixer --no-update
       - run: vendor/bin/phpunit --coverage-clover=coverage.xml
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: './coverage.xml'
